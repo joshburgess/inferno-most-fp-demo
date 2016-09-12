@@ -9,17 +9,18 @@ import { createRenderer } from 'inferno-dom'
 // Create stream of actions
 const createStream = holdSubject
 
-// Action emitter helper
+// Action dispatcher
 const dispatch = (stream, action) => stream.next(action)
 
 // Logging
 const logState = state => console.log('Current state: ', state)
 const enableLogging = state$ => observe(logState, state$)
 
-// Start function waits for initial DOM render and takes the app & mountNode
+// Run function (waits for initial DOM render)
 const run = (f, mountNode) =>
   fromEvent('DOMContentLoaded', window).take(1).observe(_ => f(mountNode))
 
+// Render virtual DOM node changes to the DOM as they stream in
 const renderChanges = vTree$ =>
   mountNode => scan(createRenderer(), mountNode, vTree$).drain()
 
