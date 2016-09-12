@@ -20,13 +20,13 @@ const enableLogging = state$ => observe(logState, state$)
 const run = (f, mountNode) =>
   fromEvent('DOMContentLoaded', window).take(1).observe(_ => f(mountNode))
 
-const createViewRenderer = vTree$ =>
+const renderChanges = vTree$ =>
   mountNode => scan(createRenderer(), mountNode, vTree$).drain()
 
 export {
+  createStream,
   dispatch,
   enableLogging,
-  createStream,
-  createViewRenderer,
+  renderChanges,
   run,
 }

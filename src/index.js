@@ -4,9 +4,9 @@ import Actions from './actions'
 import reducer from './reducers'
 import {
   createStream,
-  createViewRenderer,
   dispatch,
   enableLogging,
+  renderChanges,
   run,
 } from './utils'
 import fp from 'lodash/fp'
@@ -31,10 +31,9 @@ const initialState = 0
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, actions$)
 const vTree$ = map(view, state$)
-const viewRenderer = createViewRenderer(vTree$)
 
 // Logging
 enableLogging(state$)
 
 // Run app
-run(viewRenderer, document.getElementById('root'))
+run(renderChanges(vTree$), document.getElementById('root'))
