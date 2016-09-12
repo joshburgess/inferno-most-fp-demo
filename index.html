@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Inferno + Most Counter Demo</title>
+    <style>
+      body, #root {
+        background: rgb(136, 139, 177);
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      div.counter {
+        width: 100%;
+        position: absolute;
+        top: 20%;
+        text-align: center;
+        background: rgb(136, 139, 177);
+        color: rgb(255, 255, 255);
+      }
+
+      div.counter-btn {
+        display: inline-block;
+        width: 50%;
+        font-size: 36px;
+        line-height: 1;
+        padding: 5px 0;
+        color: rgb(255, 255, 255);
+        border: none;
+        background: rgb(136, 177, 162);
+        opacity: 1;
+        cursor: pointer;
+      }
+
+      div.counter-btn:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript" src="dist/bundle.js"></script>
+  </body>
+</html>
