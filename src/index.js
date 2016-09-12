@@ -1,9 +1,14 @@
-import { createRenderer } from 'inferno-dom'
 import { Counter } from './components'
 import { map, scan } from 'most'
 import Actions from './actions'
 import reducer from './reducers'
-import { createStream, dispatch, enableLogging, run } from './utils'
+import {
+  createStream,
+  createViewRenderer,
+  dispatch,
+  enableLogging,
+  run,
+} from './utils'
 import fp from 'lodash/fp'
 
 // Create stream of actions
@@ -13,8 +18,8 @@ const actions$ = createStream()
 const counterProps = ({
   title: 'Inferno + Most',
   subtitle: 'Counter Demo',
-  decrement: _ => dispatch(Actions.Decrement()),
-  increment: _ => dispatch(Actions.Increment()),
+  decrement: _ => dispatch(actions$, Actions.Decrement()),
+  increment: _ => dispatch(actions$, Actions.Increment()),
 })
 
 // Apply props to Counter, returning a view function which takes a state
@@ -26,10 +31,10 @@ const initialState = 0
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, actions$)
 const vTree$ = map(view, state$)
-const app = mountNode => scan(createRenderer(), mountNode, vTree$).drain()
+const viewRenderer = createViewRenderer(vTree$)
 
 // Logging
 enableLogging(state$)
 
 // Run app
-run(app, document.getElementById('root'))
+run(viewRenderer, document.getElementById('root'))

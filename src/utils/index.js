@@ -7,12 +7,10 @@ import { holdSubject } from 'most-subject'
 import { createRenderer } from 'inferno-dom'
 
 // Create stream of actions
-const actions$ = holdSubject()
+const createStream = holdSubject
 
 // Action emitter helper
-const dispatch = action => actions$.next(action)
-const createStream = _ => actions$
-// const getAppStream = _ => holdSubject()
+const dispatch = (stream, action) => stream.next(action)
 
 // Logging
 const logState = state => console.log('Current state: ', state)
@@ -22,15 +20,13 @@ const enableLogging = state$ => observe(logState, state$)
 const run = (f, mountNode) =>
   fromEvent('DOMContentLoaded', window).take(1).observe(_ => f(mountNode))
 
-const renderer = createRenderer()
-
-const createAppRenderer = vTree$ =>
-  mountNode => scan(renderer, mountNode, vTree$).drain()
+const createViewRenderer = vTree$ =>
+  mountNode => scan(createRenderer(), mountNode, vTree$).drain()
 
 export {
   dispatch,
   enableLogging,
   createStream,
-  createAppRenderer,
+  createViewRenderer,
   run,
 }
