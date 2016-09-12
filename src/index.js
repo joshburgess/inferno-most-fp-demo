@@ -9,7 +9,7 @@ import {
   renderChanges,
   run,
 } from './utils'
-import fp from 'lodash/fp'
+import curry from 'lodash/fp/curry'
 
 // Create stream of actions
 const actions$ = createStream()
@@ -18,12 +18,12 @@ const actions$ = createStream()
 const counterProps = ({
   title: 'Inferno + Most',
   subtitle: 'Counter Demo',
-  decrement: _ => dispatch(actions$, Actions.Decrement()),
-  increment: _ => dispatch(actions$, Actions.Increment()),
+  decrement: _ => dispatch(Actions.Decrement(), actions$),
+  increment: _ => dispatch(Actions.Increment(), actions$),
 })
 
 // Apply props to Counter, returning a view function which takes a state
-const view = fp.curry(Counter)(counterProps)
+const view = curry(Counter)(counterProps)
 
 // Set initial state of Counter
 const initialState = 0

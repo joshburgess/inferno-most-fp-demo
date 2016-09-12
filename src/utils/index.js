@@ -10,7 +10,7 @@ import { createRenderer } from 'inferno-dom'
 const createStream = holdSubject
 
 // Action dispatcher
-const dispatch = (actions$, action) => actions$.next(action)
+const dispatch = (action, actions$) => actions$.next(action)
 
 // Logging
 const logState = state => console.log('Current state: ', state)
