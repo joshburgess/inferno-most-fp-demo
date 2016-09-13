@@ -1,6 +1,6 @@
 {
   "name": "inferno-most-counter-demo",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A functional & reactive counter app built with Inferno & Most",
   "main": "src/index.js",
   "author": "Josh Burgess",
@@ -9,7 +9,7 @@
     "lint": "eslint src/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "mkdirp dist",
-    "build": "browserify src/index.js -t babelify --outfile dist/index.js",
+    "build": "browserify src/index.js -t babelify --outfile dist/bundle.js",
     "start": "npm install && npm run build && echo 'OPEN index.html IN YOUR BROWSER'"
   },
   "devDependencies": {
