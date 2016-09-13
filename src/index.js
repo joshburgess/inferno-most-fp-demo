@@ -15,12 +15,12 @@ import curry from 'lodash/fp/curry'
 const actions$ = createStream()
 
 // Create counter props
-const counterProps = ({
+const counterProps = {
   title: 'Inferno + Most',
   subtitle: 'Counter Demo',
   decrement: _ => dispatch(Actions.Decrement(), actions$),
   increment: _ => dispatch(Actions.Increment(), actions$),
-})
+}
 
 // Apply props to Counter, returning a view function which takes a state
 const view = curry(Counter)(counterProps)
