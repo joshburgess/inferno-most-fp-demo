@@ -32,9 +32,8 @@
     "arrow-parens": [2, "as-needed"],
     "prefer-arrow-callback": 2,
 
-    // fp rule changes
+    // fp rule changes: allow lodash & Ramda
     "fp/no-mutating-methods": [2, { "allowedObjects": ["_", "fp", "R"] }],
-    "fp/no-unused-expression": 0,
 
     // lodash/fp rules
     "lodash-fp/consistent-compose": 0,
