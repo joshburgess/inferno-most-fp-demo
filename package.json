@@ -1,6 +1,6 @@
 {
   "name": "inferno-most-counter-demo",
-  "version": "0.1.4",
+  "version": "0.0.0",
   "description": "A functional & reactive counter app built with Inferno & Most",
   "main": "src/index.js",
   "author": "Josh Burgess",

@@ -1,13 +1,13 @@
 import Inferno from 'inferno'
-import { H1, H2, Btn } from './'
+import { Btn } from './'
 
 const Counter = ({ title, subtitle, decrement, increment }, state) =>
   <div className='counter'>
-    <H1 text={title} />
-    <H2 text={subtitle} />
+    <h1>{title}</h1>
+    <h1>{subtitle}</h1>
     <br /><br />
     <Btn text='-' clickHandler={decrement} />
-    <H1 text={state} />
+    <h1>{state}</h1>
     <Btn text='+' clickHandler={increment} />
   </div>
 
