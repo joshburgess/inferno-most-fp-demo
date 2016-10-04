@@ -1,3 +1,4 @@
+// @flow
 import { Counter } from './components'
 import { map, scan } from 'most'
 import Actions from './actions'

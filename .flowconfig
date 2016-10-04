@@ -1,0 +1,13 @@
+[libs]
+interfaces
+
+[ignore]
+.*/dist/.*
+.*/lib/.*
+.*/umd/.*
+.*/demo/.*
+.*/node_modules/flow-bin/.*
+./node_modules/most/
+
+[include]
+src

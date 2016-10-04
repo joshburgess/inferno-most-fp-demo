@@ -1,3 +1,4 @@
+// @flow
 import Inferno from 'inferno'
 
 const Btn = ({ text, clickHandler }) =>
