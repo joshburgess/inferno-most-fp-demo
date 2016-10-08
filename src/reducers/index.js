@@ -1,4 +1,3 @@
-// @flow
 import Actions from '../actions'
 
 const reducer = (state, action) => Actions.case({

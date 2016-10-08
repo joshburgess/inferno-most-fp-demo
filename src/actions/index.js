@@ -1,4 +1,3 @@
-// @flow
 import Type from 'union-type'
 
 const Actions = Type({
