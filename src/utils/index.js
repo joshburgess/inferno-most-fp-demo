@@ -3,11 +3,11 @@ import {
   fromEvent,
   scan,
 } from 'most'
-import { holdSubject } from 'most-subject'
-import { createRenderer } from 'inferno-dom'
+import { async } from 'most-subject'
+import { createRenderer } from 'inferno'
 
 // Create stream of actions
-const createStream = holdSubject
+const createStream = async
 
 // Action dispatcher
 const dispatch = (action, actions$) => actions$.next(action)

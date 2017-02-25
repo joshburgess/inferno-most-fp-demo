@@ -1,6 +1,6 @@
 import { Counter } from './components'
 import { map, scan } from 'most'
-import Actions from './actions'
+import ActionTypes from './actions/actionTypes'
 import reducer from './reducers'
 import {
   createStream,
@@ -9,7 +9,9 @@ import {
   renderChanges,
   run,
 } from './utils'
+// import curry from 'ramda'
 import curry from 'lodash/fp/curry'
+import 'inferno-devtools'
 
 // Create stream of actions
 const actions$ = createStream()
@@ -18,8 +20,10 @@ const actions$ = createStream()
 const counterProps = {
   title: 'Inferno + Most',
   subtitle: 'Counter Demo',
-  decrement: _ => dispatch(Actions.Decrement(), actions$),
-  increment: _ => dispatch(Actions.Increment(), actions$),
+  decrement: _ => dispatch(ActionTypes.Decrement(), actions$),
+  increment: _ => dispatch(ActionTypes.Increment(), actions$),
+  reset: _ => dispatch(ActionTypes.Reset(), actions$),
+  alert: _ => dispatch(ActionTypes.Alert(), actions$),
 }
 
 // Apply props to Counter, returning a view function which takes a state
