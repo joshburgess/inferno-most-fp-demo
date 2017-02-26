@@ -1,48 +1,53 @@
-import { Counter } from './components'
-import { map, scan, skipRepeats, skipRepeatsWith } from 'most'
-import reducer from './reducers'
+import { Counter, Header } from './components'
 import {
-  createStream,
-  enableLogging,
-  renderChanges,
-  run,
-} from './utils'
+  map,
+  scan,
+  // skipRepeats,
+  // skipRepeatsWith,
+} from 'most'
+import reducer from './reducers'
+import { createStream, enableLogging, render } from './utils'
 import Inferno from 'inferno'
 import 'inferno-devtools'
-import compose from 'ramda/src/compose'
-// import curry from 'lodash/fp/curry'
-// import compose from 'lodash/fp/compose'
+// import { curry } from 'ramda'
+// import { curry } from 'lodash/fp'
+import { get, toClj } from 'mori'
+import { COUNT_KEY, SUBTITLE_KEY, TITLE_KEY } from './constants'
 
 // Create stream of actions
 const actions$ = createStream()
 
-// Apply props to Counter, returning a view function which takes a state
-// const view = Counter({
-//   title: 'Inferno + Most',
-//   subtitle: 'Counter Demo',
-//   actions$,
-// })
+// // Set the initial state of the app using a plain JS object to hold app state
+// const initialState = {
+//   'count': 0,
+//   'subtitle': 'Counter Demo',
+//   'title': 'Inferno + Most',
+// }
 
-// const view = state => Counter({
-//   title: 'Inferno + Most',
-//   subtitle: 'Counter Demo',
-//   count: state,
-//   actions$,
-// })
+// const view = ({ title, subtitle, count }) =>
+//   <div className='counter'>
+//     <Header title={title} subtitle={subtitle} />
+//     <Counter count={count} actions$={actions$} />
+//   </div>
 
-const view = state =>
-  <Counter
-    title={'Inferno + Most'}
-    subtitle={'Counter Demo'}
-    count={state}
-    actions$={actions$}
-  />
+// Set the initial state of the app using a mori hashMap to hold app state
+const initialState = toClj({
+  'count': 0,
+  'subtitle': 'Counter Demo',
+  'title': 'Inferno + Most',
+})
 
-// Set initial state of Counter
-const initialState = 0
+const view = state => {
+  const getVal = key => get(state, key)
+  return (
+    <div className='counter'>
+      <Header title={getVal(TITLE_KEY)} subtitle={getVal(SUBTITLE_KEY)} />
+      <Counter count={getVal(COUNT_KEY)} actions$={actions$} />
+    </div>
+  )
+}
 
 // Data flow for the entire app
-const scanDistinct = compose(skipRepeats, scan)
 const state$ = scan(reducer, initialState, actions$)
 const vTree$ = map(view, state$)
 
@@ -54,7 +59,7 @@ const vTree$ = map(view, state$)
 // Logging
 enableLogging(state$)
 
-// Run app
-run(renderChanges(vTree$), document.getElementById('root'))
+// Mount app, track virtual DOM tree updates, & automatically render changes
+render(vTree$, document.getElementById('root'))
 
 /* eslint-enable fp/no-unused-expression */
