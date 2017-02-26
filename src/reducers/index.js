@@ -1,12 +1,14 @@
 import Actions from '../actions'
+import inc from 'ramda/src/inc'
+import dec from 'ramda/src/dec'
 
 const reducer = (state, action) => Actions.case({
-  Increment: () => state + 1,
-  Decrement: () => state - 1,
+  Increment: () => inc(state),
+  Decrement: () => dec(state),
   Reset: () => 0,
   Alert: () => {
     /* eslint-disable fp/no-unused-expression */
-    alert(state)
+    console.log('alert', state)
     /* eslint-disable fp/no-unused-expression */
     return state
   },

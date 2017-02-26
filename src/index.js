@@ -1,5 +1,5 @@
 import { Counter } from './components'
-import { map, scan } from 'most'
+import { map, scan, skipRepeats, skipRepeatsWith } from 'most'
 import reducer from './reducers'
 import {
   createStream,
@@ -9,6 +9,9 @@ import {
 } from './utils'
 import Inferno from 'inferno'
 import 'inferno-devtools'
+import compose from 'ramda/src/compose'
+// import curry from 'lodash/fp/curry'
+// import compose from 'lodash/fp/compose'
 
 // Create stream of actions
 const actions$ = createStream()
@@ -39,6 +42,7 @@ const view = state =>
 const initialState = 0
 
 // Data flow for the entire app
+const scanDistinct = compose(skipRepeats, scan)
 const state$ = scan(reducer, initialState, actions$)
 const vTree$ = map(view, state$)
 
