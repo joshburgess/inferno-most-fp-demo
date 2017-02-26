@@ -1,6 +1,6 @@
 import Inferno from 'inferno'
 
-const Btn = ({
+const Button = ({
   text,
   clickHandler,
   style,
@@ -13,4 +13,4 @@ const Btn = ({
     {text}
   </div>
 
-export default Btn
+export default Button

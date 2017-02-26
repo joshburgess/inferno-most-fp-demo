@@ -1,33 +1,39 @@
 import { Counter } from './components'
 import { map, scan } from 'most'
-import ActionTypes from './actions/actionTypes'
 import reducer from './reducers'
 import {
   createStream,
-  dispatch,
   enableLogging,
   renderChanges,
   run,
 } from './utils'
-// import curry from 'ramda'
-import curry from 'lodash/fp/curry'
+import Inferno from 'inferno'
 import 'inferno-devtools'
 
 // Create stream of actions
 const actions$ = createStream()
 
-// Create counter props
-const counterProps = {
-  title: 'Inferno + Most',
-  subtitle: 'Counter Demo',
-  decrement: _ => dispatch(ActionTypes.Decrement(), actions$),
-  increment: _ => dispatch(ActionTypes.Increment(), actions$),
-  reset: _ => dispatch(ActionTypes.Reset(), actions$),
-  alert: _ => dispatch(ActionTypes.Alert(), actions$),
-}
-
 // Apply props to Counter, returning a view function which takes a state
-const view = curry(Counter)(counterProps)
+// const view = Counter({
+//   title: 'Inferno + Most',
+//   subtitle: 'Counter Demo',
+//   actions$,
+// })
+
+// const view = state => Counter({
+//   title: 'Inferno + Most',
+//   subtitle: 'Counter Demo',
+//   count: state,
+//   actions$,
+// })
+
+const view = state =>
+  <Counter
+    title={'Inferno + Most'}
+    subtitle={'Counter Demo'}
+    count={state}
+    actions$={actions$}
+  />
 
 // Set initial state of Counter
 const initialState = 0
@@ -37,7 +43,7 @@ const state$ = scan(reducer, initialState, actions$)
 const vTree$ = map(view, state$)
 
 // NOTE: Effectful code must always disable fp/no-unused-expression
-// This is fine. Use the linter to help you be vigilant.
+// This is fine. Use the linter to stay disciplined.
 
 /* eslint-disable fp/no-unused-expression */
 

@@ -1,10 +1,11 @@
 import Type from 'union-type'
 
-const ActionTypes = Type({
+// Actions
+const Actions = Type({
   Increment: [],
   Decrement: [],
   Reset: [],
   Alert: [],
 })
 
-export default ActionTypes
+export default Actions
