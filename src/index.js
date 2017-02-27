@@ -59,7 +59,7 @@ const vTree$ = map(view, state$)
 /* eslint-disable fp/no-unused-expression */
 
 // Logging
-enableLogger(state$)
+// enableLogger(state$)
 
 // Mount app, track virtual DOM tree updates, & automatically render changes
 render(vTree$, document.getElementById('root'))
