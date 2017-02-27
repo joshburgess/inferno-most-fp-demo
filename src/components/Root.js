@@ -9,12 +9,12 @@ const Counter = ({
   title,
   subtitle,
   count,
-  actions$,
+  action$,
 }) => {
-  const decrement = () => dispatch(Actions.Decrement(), actions$)
-  const increment = () => dispatch(Actions.Increment(), actions$)
-  const reset = () => dispatch(Actions.Reset(), actions$)
-  const alert = () => dispatch(Actions.Alert(), actions$)
+  const decrement = () => dispatch(Actions.Decrement(), action$)
+  const increment = () => dispatch(Actions.Increment(), action$)
+  const reset = () => dispatch(Actions.Reset(), action$)
+  const alert = () => dispatch(Actions.Alert(), action$)
   return (
     <div>
       <Button

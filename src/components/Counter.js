@@ -1,12 +1,11 @@
 import Inferno from 'inferno'
 import { Button } from './'
-import { dispatch } from '../utils'
-import Actions from '../actions'
+import { increment, decrement, reset } from '../actions'
 
-const Counter = ({ title, subtitle, count, actions$ }) => {
-  const decrement = () => dispatch(Actions.Decrement(), actions$)
-  const increment = () => dispatch(Actions.Increment(), actions$)
-  const reset = () => dispatch(Actions.Reset(), actions$)
+const Counter = ({ title, subtitle, count }) => {
+  // const decrement = () => dispatch(Actions.DECREMENT(), action$)
+  // const increment = () => dispatch(Actions.INCREMENT(), action$)
+  // const reset = () => dispatch(Actions.RESET(), action$)
   const styles = {
     reset: { background: 'rgb(177, 136, 136)' },
   }
