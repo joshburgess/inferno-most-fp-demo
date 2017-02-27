@@ -11,6 +11,8 @@ import * as stateKeys from './constants/stateKeys'
 
 // Create stream of actions
 const action$ = createStream()
+
+// Generate a dispatch function for emitting actions through actions$
 export const dispatch = createDispatch(action$)
 
 // // Set the initial state of the app using a plain JS object to hold app state

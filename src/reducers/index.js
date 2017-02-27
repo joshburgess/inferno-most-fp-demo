@@ -5,6 +5,7 @@ import { enableLogging } from '../utils/logger'
 import { dec, inc, compose } from 'ramda'
 // import { compose } from 'lodash/fp'
 
+// Using a plain JS object to hold app state
 // const reducer = (state, action) => Actions.case({
 //   Increment: () => ({ ...state, count: inc(state.count) }),
 //   Decrement: () => ({ ...state, count: dec(state.count) }),
@@ -12,6 +13,7 @@ import { dec, inc, compose } from 'ramda'
 //   _: () => state,
 // }, action)
 
+// Using a mori hashMap to hold app state
 const reducer = (state, action) => {
   // get prev count value from existing state hashMap
   const prevCount = get(state, stateKeys.COUNT)
