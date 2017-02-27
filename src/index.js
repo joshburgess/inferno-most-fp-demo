@@ -6,14 +6,13 @@ import {
   // skipRepeatsWith,
 } from 'most'
 import reducer from './reducers'
-import { createDispatch, createStream, enableLogger, render } from './utils'
-import { startApp } from './actions'
+import { createDispatch, createStream, render } from './utils'
 import Inferno from 'inferno'
 import 'inferno-devtools'
 // import { curry } from 'ramda'
 // import { curry } from 'lodash/fp'
 import { get, toClj } from 'mori'
-import { STATE_KEY_COUNT, STATE_KEY_SUBTITLE, STATE_KEY_TITLE } from './constants'
+import * as stateKeys from './constants/stateKeys'
 
 // Create stream of actions
 const action$ = createStream()
@@ -21,9 +20,9 @@ export const dispatch = createDispatch(action$)
 
 // // Set the initial state of the app using a plain JS object to hold app state
 // const initialState = {
-//   'count': 0,
-//   'subtitle': 'Counter Demo',
-//   'title': 'Inferno + Most',
+//   [stateKeys.COUNT]: 0,
+//   [stateKeys.SUBTITLE]: 'Counter Demo',
+//   [stateKeys.TITLE]: 'Inferno + Most',
 // }
 
 // const view = ({ title, subtitle, count }) =>
@@ -34,17 +33,20 @@ export const dispatch = createDispatch(action$)
 
 // Set the initial state of the app using a mori hashMap to hold app state
 const initialState = toClj({
-  'count': 0,
-  'subtitle': 'Counter Demo',
-  'title': 'Inferno + Most',
+  [stateKeys.COUNT]: 0,
+  [stateKeys.SUBTITLE]: 'Counter Demo',
+  [stateKeys.TITLE]: 'Inferno + Most',
 })
 
 const view = state => {
   const getVal = key => get(state, key)
   return (
     <div className='counter-demo'>
-      <Header title={getVal(STATE_KEY_TITLE)} subtitle={getVal(STATE_KEY_SUBTITLE)} />
-      <Counter count={getVal(STATE_KEY_COUNT)} />
+      <Header
+        title={getVal(stateKeys.TITLE)}
+        subtitle={getVal(stateKeys.SUBTITLE)}
+      />
+      <Counter count={getVal(stateKeys.COUNT)} />
     </div>
   )
 }
@@ -58,11 +60,7 @@ const vTree$ = map(view, state$)
 
 /* eslint-disable fp/no-unused-expression */
 
-// Logging
-// enableLogger(state$)
-
 // Mount app, track virtual DOM tree updates, & automatically render changes
 render(vTree$, document.getElementById('root'))
-// dispatch(startApp)
 
 /* eslint-enable fp/no-unused-expression */

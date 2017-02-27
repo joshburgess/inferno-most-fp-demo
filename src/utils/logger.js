@@ -1,78 +1,46 @@
-import { observe, skipRepeatsWith } from 'most'
 import { toJs } from 'mori'
-import { LOG_TYPES, NOOP } from '../constants'
+import * as logTypes from '../constants/logTypes'
 import { format } from 'date-fns'
 
 // Logging
-const logStates = (prevState, nextState) => {
+const enableLogging = (action, prevState, nextState) => {
   const prevStateJs = toJs(prevState)
   const nextStateJs = toJs(nextState)
-  const { lastAction } = nextStateJs
-  const { type } = lastAction
+  const { _name: type, payload } = action
   const timeFmt = 'HH:mm:ss.SSS'
+  const bold = 'font-weight: bold;'
+
+  // NOTE: Effectful code must always disable fp/no-unused-expression
+  // This is fine. Use the linter to stay disciplined.
 
   /* eslint-disable fp/no-unused-expression */
+
   console.group(
-    `%c${LOG_TYPES.action.label} @ ${format(Date.now(), timeFmt)} ${type}`,
-    `font-weight: bold;`
+    `%c${logTypes.ACTION_LABEL} @ ${format(Date.now(), timeFmt)} ${type}`,
+    bold
   )
   console.log(
-    `%c${LOG_TYPES.prevState.label}`,
-    `color: ${LOG_TYPES.prevState.color}; font-weight: bold;`,
+    `%c${logTypes.PREV_STATE_LABEL}`,
+    `color: ${logTypes.PREV_STATE_COLOR}; ${bold}`,
     prevStateJs
   )
   console.log(
-    `%c${LOG_TYPES.action.label}`,
-    `color: ${LOG_TYPES.action.color}; font-weight: bold;`,
-    lastAction
+    `%c${logTypes.ACTION_LABEL}`,
+    `color: ${logTypes.ACTION_COLOR}; ${bold}`,
+    payload ? { type, payload } : { type }
   )
   console.log(
-    `%c${LOG_TYPES.nextState.label}`,
-    `color: ${LOG_TYPES.nextState.color}; font-weight: bold;`,
+    `%c${logTypes.NEXT_STATE_LABEL}`,
+    `color: ${logTypes.NEXT_STATE_COLOR}; ${bold}`,
     nextStateJs
   )
   console.groupEnd()
-  /* eslint-enable fp/no-unused-expression */
 
-  // Return default equality test to preserve default skipRepeats functionality
-  return prevState === nextState
-}
-
-const enableLogger = state$ => observe(NOOP, skipRepeatsWith(logStates, state$))
-
-const enableReducerLogging = (action, prevState, nextState) => {
-  const { type } = action
-  const timeFmt = 'HH:mm:ss.SSS'
-  const prevStateJs = toJs(prevState)
-  const nextStateJs = toJs(nextState)
-
-  /* eslint-disable fp/no-unused-expression */
-  console.group(
-    `%c${LOG_TYPES.action.label} @ ${format(Date.now(), timeFmt)} ${type}`,
-    `font-weight: bold;`
-  )
-  console.log(
-    `%c${LOG_TYPES.prevState.label}`,
-    `color: ${LOG_TYPES.prevState.color}; font-weight: bold;`,
-    prevStateJs
-  )
-  console.log(
-    `%c${LOG_TYPES.action.label}`,
-    `color: ${LOG_TYPES.action.color}; font-weight: bold;`,
-    action
-  )
-  console.log(
-    `%c${LOG_TYPES.nextState.label}`,
-    `color: ${LOG_TYPES.nextState.color}; font-weight: bold;`,
-    nextStateJs
-  )
-  console.groupEnd()
   /* eslint-enable fp/no-unused-expression */
 
   return nextState
 }
 
 export {
-  enableLogger,
-  enableReducerLogging,
+  enableLogging,
 }

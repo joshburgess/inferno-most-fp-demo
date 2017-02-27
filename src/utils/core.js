@@ -1,7 +1,9 @@
-import { observe } from 'most'
+import { observe, tap } from 'most'
 import { async } from 'most-subject'
 import { drainScan, ready } from './custom-operators'
 import { createRenderer } from 'inferno'
+import { init } from '../actions'
+import { compose, curry } from 'ramda'
 
 // Alias the async function name for users unfamiliar with most-subject
 // This will create a Subject stream to imperatively dispatch actions through
@@ -15,8 +17,12 @@ const createDispatch = action$ => action => action$.next(action)
 const scanRenderer = vTree$ =>
   mountNode => drainScan(createRenderer(), mountNode, vTree$)
 
+// Dispatch INIT before rendering
+const logInit = curry(tap)(init)
+const logInitOnReady = compose(logInit, ready)
+
 const render = (vTree$, mountNode) =>
-  observe(() => scanRenderer(vTree$)(mountNode), ready())
+  observe(() => scanRenderer(vTree$)(mountNode), logInitOnReady())
 
 export {
   createDispatch,

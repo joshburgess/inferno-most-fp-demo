@@ -7,8 +7,8 @@ import {
   switchLatest,
   take,
 } from 'most'
-import { curry, compose } from 'ramda'
-// import { curry, compose, curry} from 'lodash/fp'
+import { compose, curry } from 'ramda'
+// import { compose, curry } from 'lodash/fp'
 
 /******************************************************************************
   Custom stream operators made with Most.js built-ins & functional composition

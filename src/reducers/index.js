@@ -1,8 +1,9 @@
-import { dec, inc } from 'ramda'
-import { get, hashMap, merge } from 'mori'
+import { partial, get, hashMap, merge } from 'mori'
 import Actions from '../actions'
-import { STATE_KEY_COUNT, STATE_KEY_LAST_ACTION } from '../constants'
-import { enableReducerLogging } from '../utils/logger'
+import * as stateKeys from '../constants/stateKeys'
+import { enableLogging } from '../utils/logger'
+import { dec, inc, compose } from 'ramda'
+// import { compose } from 'lodash/fp'
 
 // const reducer = (state, action) => Actions.case({
 //   Increment: () => ({ ...state, count: inc(state.count) }),
@@ -12,28 +13,29 @@ import { enableReducerLogging } from '../utils/logger'
 // }, action)
 
 const reducer = (state, action) => {
-  const prevCount = get(state, STATE_KEY_COUNT)
-  const hashMapWithCount = val => hashMap(STATE_KEY_COUNT, val)
+  // get prev count value from existing state hashMap
+  const prevCount = get(state, stateKeys.COUNT)
+
+  // partially apply state argument to make a reusable merge function
+  const mergeState = partial(merge, state)
+
+  // partially apply key argument to make a reusable set function
+  const setCount = partial(hashMap, stateKeys.COUNT)
+
+  // create reusable merge variants via functional composition
+  const mergeSetCount = compose(mergeState, setCount)
+  const mergeIncCount = compose(mergeSetCount, inc)
+  const mergeDecCount = compose(mergeSetCount, dec)
 
   return Actions.case({
-    INCREMENT: () => merge(state, hashMapWithCount(inc(prevCount))),
-    DECREMENT: () => merge(state, hashMapWithCount(dec(prevCount))),
-    RESET: () => merge(state, hashMapWithCount(0)),
+    INCREMENT: () => mergeIncCount(prevCount),
+    DECREMENT: () => mergeDecCount(prevCount),
+    RESET: () => mergeSetCount(0),
     _: () => state,
   }, action)
 }
 
-// const reducerWithActionLogging = (state, action) => {
-//   // Always store last action fired under the lastAction state key for logging
-//   const updatedState = merge(
-//     state,
-//     // hashMap(STATE_KEY_LAST_ACTION, { type: action._name })
-//     hashMap(STATE_KEY_LAST_ACTION, action)
-//   )
-//   return reducer(updatedState, action)
-// }
+const reducerWithLogging = (state, action) =>
+  enableLogging(action, state, reducer(state, action))
 
-const reducerWithActionLogging = (state, action) =>
-  enableReducerLogging(action, state, reducer(state, action))
-
-export default reducerWithActionLogging
+export default reducerWithLogging

@@ -1,25 +1,25 @@
 import Type from 'union-type'
 import { dispatch } from '../'
+import * as actionTypes from '../constants/actionTypes'
+// import { curry } from 'ramda'
+// import { curry } from 'lodash/fp'
 
 // Record types
-const DefaultActionRecord = { type: String }
-const PayloadActionRecord = { type: String, payload: Object }
+const DefaultActionRecordType = { }
+// const PayloadActionRecordType = { payload: Object }
 
 // Actions
 const Actions = Type({
-  '@@app/START_APP': DefaultActionRecord,
-  INCREMENT: DefaultActionRecord,
-  DECREMENT: DefaultActionRecord,
-  RESET: DefaultActionRecord,
+  [actionTypes.INIT]: DefaultActionRecordType,
+  [actionTypes.INCREMENT]: DefaultActionRecordType,
+  [actionTypes.DECREMENT]: DefaultActionRecordType,
+  [actionTypes.RESET]: DefaultActionRecordType,
 })
 
-// Action creators for default actions
-// Apply first argument (type) to type constructor to assign a type property
-// for users familiar with Redux, creating reusable action creator functions
-// with a type property already assigned
-export const startApp = () => dispatch(Actions['@@app/START_APP']('@@app/START_APP'))
-export const increment = () => dispatch(Actions.INCREMENT('INCREMENT'))
-export const decrement = () => dispatch(Actions.DECREMENT('DECREMENT'))
-export const reset = () => dispatch(Actions.RESET('RESET'))
+// Action creators
+export const init = () => dispatch(Actions[actionTypes.INIT]())
+export const increment = () => dispatch(Actions[actionTypes.INCREMENT]())
+export const decrement = () => dispatch(Actions[actionTypes.DECREMENT]())
+export const reset = () => dispatch(Actions[actionTypes.RESET]())
 
 export default Actions
