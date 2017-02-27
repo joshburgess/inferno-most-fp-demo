@@ -1,10 +1,5 @@
 import { Counter, Header } from './components'
-import {
-  map,
-  scan,
-  // skipRepeats,
-  // skipRepeatsWith,
-} from 'most'
+import { map, scan } from 'most'
 import reducer from './reducers'
 import { createDispatch, createStream, render } from './utils'
 import Inferno from 'inferno'
