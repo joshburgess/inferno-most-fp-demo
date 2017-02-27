@@ -9,12 +9,11 @@ const logStates = (prevState, nextState) => {
   const nextStateJs = toJs(nextState)
   const { lastAction } = nextStateJs
   const { type } = lastAction
-
+  const timeFmt = 'HH:mm:ss.SSS'
   /* eslint-disable fp/no-unused-expression */
   console.group(
-    `%c${LOG_TYPES.action.label} @ ${format(Date.now())} ${type}`,
-    `font-weight: bold;`,
-    ''
+    `%c${LOG_TYPES.action.label} @ ${format(Date.now(), timeFmt)} ${type}`,
+    `font-weight: bold;`
   )
   console.log(
     `%c${LOG_TYPES.prevState.label}`,

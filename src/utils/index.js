@@ -1,25 +1,17 @@
 import {
-  drain,
   fromEvent,
   observe,
-  scan,
-  // skipRepeats,
-  // switchLatest,
   take,
 } from 'most'
 import { async } from 'most-subject'
+import { drainScan } from './composite-operators'
+import enableLogger from './logger'
 import { createRenderer } from 'inferno'
 import { compose, curry } from 'ramda'
 // import { compose, curry} from 'lodash/fp'
-import enableLogger from './logger'
-
-// Stream utilities built with Most.js built-ins & functional composition
-const drainScan = compose(drain, scan)
-// const distinctScan = compose(skipRepeats, scan)
-// const switchMap = compose(switchLatest, map)
 
 // Alias the async function name for users unfamiliar with most-subject
-// This will create a Subject stream for imperatively dispatching actions
+// This will create a Subject stream to imperatively dispatch actions through
 const createStream = async
 
 // Factory function which creates an alias for the Subject's next() method,
