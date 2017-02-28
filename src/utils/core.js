@@ -1,7 +1,8 @@
+import { createRenderer } from 'inferno'
+import 'inferno-devtools'
 import { observe, tap } from 'most'
 import { async } from 'most-subject'
 import { drainScan, ready } from './custom-operators'
-import { createRenderer } from 'inferno'
 import { init } from '../actions'
 import { compose, curry } from 'ramda'
 

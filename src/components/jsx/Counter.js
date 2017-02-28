@@ -1,6 +1,7 @@
+// Use JSX
 import Inferno from 'inferno'
-import { Button } from './'
-import { increment, decrement, reset } from '../actions'
+import { Button } from '../../components'
+import { increment, decrement, reset } from '../../actions'
 
 const resetStyle = { background: 'rgb(177, 136, 136)' }
 
