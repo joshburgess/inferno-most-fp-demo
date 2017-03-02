@@ -14,18 +14,6 @@ const action$ = createStream()
 export const dispatch = createDispatch(action$)
 
 /******************************************************************************
-  Using a plain JS object to hold app state
-*******************************************************************************/
-
-// const initialState = {
-//   [stateKeys.COUNT]: 0,
-//   [stateKeys.SUBTITLE]: 'Counter Demo',
-//   [stateKeys.TITLE]: 'Inferno + Most',
-// }
-
-// const mapStateToView = ({ title, subtitle, count }) => Root({ subtitle, title, count })
-
-/******************************************************************************
   Using a mori hashMap to hold app state
 *******************************************************************************/
 
@@ -42,7 +30,6 @@ const mapStateToView = state => {
   const count = getVal(stateKeys.COUNT)
   return Root({ subtitle, title, count })
 }
-
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)

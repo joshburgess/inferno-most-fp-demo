@@ -6,17 +6,6 @@ import { dec, inc, compose } from 'ramda'
 // import { compose } from 'lodash/fp'
 
 /******************************************************************************
-  Using a plain JS object to hold app state
-*******************************************************************************/
-
-// const reducer = (state, action) => Actions.case({
-//   Increment: () => ({ ...state, count: inc(state.count) }),
-//   Decrement: () => ({ ...state, count: dec(state.count) }),
-//   Reset: () => ({ ...state, count: 0 }),
-//   _: () => state,
-// }, action)
-
-/******************************************************************************
   Using a mori hashMap to hold app state
 *******************************************************************************/
 
