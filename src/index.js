@@ -1,7 +1,7 @@
 import Inferno from 'inferno'
 import { createDispatch, createStream, render } from './utils'
 import { map, scan } from 'most'
-import { Root } from './components'
+import { View } from './components'
 import reducer from './reducers'
 import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
 
@@ -21,9 +21,9 @@ const initialState = {
   [TITLE]: 'Inferno + Most',
 }
 
-// Use mapStateToView if using JSX or just use the Root function directly
+// Use mapStateToView if using JSX or just use the View function directly
 const mapStateToView = ({ count, subtitle, title }) =>
-  <Root count={count} subtitle={subtitle} title={title} />
+  <View count={count} subtitle={subtitle} title={title} />
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)

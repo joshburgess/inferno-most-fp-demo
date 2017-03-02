@@ -1,16 +1,23 @@
-import Actions from '../actions'
-import { COUNT } from '../constants/stateKeys'
-import { enableLogging } from '../utils/logger'
 import { dec, inc } from 'ramda'
+import Actions from '../actions'
+import { COUNT, SUBTITLE } from '../constants/stateKeys'
+import {
+  INCREMENT,
+  DECREMENT,
+  RESET,
+  EDIT_SUBTITLE,
+} from '../constants/actionTypes'
+import { enableLogging } from '../utils/logger'
 
 /******************************************************************************
   Using a plain JS object to hold app state
 *******************************************************************************/
 
 const reducer = (state, action) => Actions.case({
-  INCREMENT: () => ({ ...state, [COUNT]: inc(state.count) }),
-  DECREMENT: () => ({ ...state, [COUNT]: dec(state.count) }),
-  RESET: () => ({ ...state, [COUNT]: 0 }),
+  [INCREMENT]: () => ({ ...state, [COUNT]: inc(state[COUNT]) }),
+  [DECREMENT]: () => ({ ...state, [COUNT]: dec(state[COUNT]) }),
+  [RESET]: () => ({ ...state, [COUNT]: 0 }),
+  [EDIT_SUBTITLE]: () => ({ ...state, [SUBTITLE]: action.payload }),
   _: () => state,
 }, action)
 
