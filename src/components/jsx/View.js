@@ -20,7 +20,11 @@ const View = ({ count, subtitle, title }) =>
     <Header title={title} subtitle={subtitle} />
     <Counter count={count} />
     <div>
-      <Textbox label={'Edit subtitle'} onInput={debouncedEditSubtitle} />
+      <Textbox
+        id={'edit-subtitle'}
+        label={'Edit subtitle'}
+        onInput={debouncedEditSubtitle}
+      />
     </div>
   </div>
 
