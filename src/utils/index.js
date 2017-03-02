@@ -2,6 +2,7 @@ import {
   createDispatch,
   createStream,
   render,
+  selectAction,
 } from './core'
 import { enableLogger } from './logger'
 
@@ -10,4 +11,5 @@ export {
   createStream,
   enableLogger,
   render,
+  selectAction,
 }

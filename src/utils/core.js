@@ -1,5 +1,5 @@
 import { createRenderer } from 'inferno'
-import { observe, tap } from 'most'
+import { filter, observe, tap } from 'most'
 import { async } from 'most-subject'
 import { drainScan, ready } from './custom-operators'
 import { compose, curry } from 'ramda'
@@ -24,8 +24,12 @@ const logInitOnReady = compose(logInit, ready)
 const render = (vTree$, mountNode) =>
   observe(() => scanRenderer(vTree$)(mountNode), logInitOnReady())
 
+const selectAction = curry((actionType, stream) =>
+  filter(({ _name }) => _name && _name === actionType, stream))
+
 export {
   createDispatch,
   createStream,
   render,
+  selectAction,
 }

@@ -1,7 +1,7 @@
 // Use JSX
 import Inferno from 'inferno'
 
-const Textbox = ({ label, onKeyDown }) =>
+const Textbox = ({ label, onInput }) =>
   <div className='measure'>
     <label
       htmlFor='name'
@@ -13,7 +13,7 @@ const Textbox = ({ label, onKeyDown }) =>
       className='input-reset ba b--black-20 pa2 mb2 db w-100'
       type='text'
       aria-describedby='name-desc'
-      onKeyDown={onKeyDown}
+      onInput={onInput}
     />
   </div>
 

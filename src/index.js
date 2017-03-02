@@ -2,13 +2,13 @@
 import { createDispatch, createStream, render } from './utils'
 import { map, scan } from 'most'
 import { get, toClj } from 'mori'
-import { partial } from 'ramda'
+import { curry, partial } from 'ramda'
 import { View } from './components'
 import reducer from './reducers'
 import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
 
 // Create stream of actions
-const action$ = createStream()
+export const action$ = createStream()
 
 // Generate a dispatch function for emitting actions through actions$
 export const dispatch = createDispatch(action$)
@@ -23,13 +23,21 @@ const initialState = toClj({
   [TITLE]: 'Inferno + Most',
 })
 
+const ViewWithActions$ = curry(View)(action$)
+
 const mapStateToView = state => {
   const getState = partial(get, [state])
+
   const subtitle = getState(SUBTITLE)
   const title = getState(TITLE)
   const count = getState(COUNT)
+  const shouldComponentUpdate = (nextProps, nextState) => {
+    console.log('nextProps', nextProps)
+    console.log('nextState', nextState)
+    return title !== nextProps.title ? true : false
+  }
 
-  return View({ subtitle, title, count })
+  return ViewWithActions$({ subtitle, title, count, shouldComponentUpdate })
   // return <View count={count} subtitle={subtitle} title={title} />
 }
 
