@@ -7,7 +7,7 @@ import {
 } from '../../components'
 // import {  } from '../../actions'
 
-const Root = ({ count, subtitle, title }) =>
+const View = ({ count, subtitle, title }) =>
   <div className={'counter-demo'}>
     <Header title={title} subtitle={subtitle} />
     <Counter count={count} />
@@ -19,4 +19,4 @@ const Root = ({ count, subtitle, title }) =>
     */}
   </div>
 
-export default Root
+export default View

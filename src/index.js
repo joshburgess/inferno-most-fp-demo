@@ -1,7 +1,8 @@
-import { map, scan } from 'most'
-import reducer from './reducers'
+import Inferno from 'inferno'
 import { createDispatch, createStream, render } from './utils'
+import { map, scan } from 'most'
 import { Root } from './components'
+import reducer from './reducers'
 import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
 
 // Create stream of actions
@@ -20,7 +21,9 @@ const initialState = {
   [TITLE]: 'Inferno + Most',
 }
 
-const mapStateToView = ({ title, subtitle, count }) => Root({ subtitle, title, count })
+// Use mapStateToView if using JSX or just use the Root function directly
+const mapStateToView = ({ count, subtitle, title }) =>
+  <Root count={count} subtitle={subtitle} title={title} />
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)
