@@ -1,11 +1,11 @@
-import { map, scan } from 'most'
-import reducer from './reducers'
+// import Inferno from 'inferno'
 import { createDispatch, createStream, render } from './utils'
-import { Root } from './components'
-// import { curry } from 'ramda'
-// import { curry } from 'lodash/fp'
+import { map, scan } from 'most'
 import { get, toClj } from 'mori'
-import * as stateKeys from './constants/stateKeys'
+import { partial } from 'ramda'
+import { View } from './components'
+import reducer from './reducers'
+import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
 
 // Create stream of actions
 const action$ = createStream()
@@ -18,17 +18,19 @@ export const dispatch = createDispatch(action$)
 *******************************************************************************/
 
 const initialState = toClj({
-  [stateKeys.COUNT]: 0,
-  [stateKeys.SUBTITLE]: 'Counter Demo',
-  [stateKeys.TITLE]: 'Inferno + Most',
+  [COUNT]: 0,
+  [SUBTITLE]: 'Counter Demo',
+  [TITLE]: 'Inferno + Most',
 })
 
 const mapStateToView = state => {
-  const getVal = key => get(state, key)
-  const subtitle = getVal(stateKeys.SUBTITLE)
-  const title = getVal(stateKeys.TITLE)
-  const count = getVal(stateKeys.COUNT)
-  return Root({ subtitle, title, count })
+  const getState = partial(get, [state])
+  const subtitle = getState(SUBTITLE)
+  const title = getState(TITLE)
+  const count = getState(COUNT)
+
+  return View({ subtitle, title, count })
+  // return <View count={count} subtitle={subtitle} title={title} />
 }
 
 // Data flow for the entire app

@@ -1,13 +1,19 @@
 import { toJs } from 'mori'
-import * as logTypes from '../constants/logTypes'
 import { format } from 'date-fns'
+import {
+  ACTION_LABEL,
+  ACTION_COLOR,
+  NEXT_STATE_LABEL,
+  NEXT_STATE_COLOR,
+  PREV_STATE_LABEL,
+  PREV_STATE_COLOR,
+} from '../constants/logTypes'
 
 // Logging
-const enableLogging = (action, prevState, nextState) => {
-  const prevStateJs = toJs(prevState)
-  const nextStateJs = toJs(nextState)
+const enableLogging = (prevState, action, nextState) => {
   const { _name: type, payload } = action
   const timeFmt = 'HH:mm:ss.SSS'
+  const timestamp = format(Date.now(), timeFmt)
   const bold = 'font-weight: bold;'
 
   // NOTE: Effectful code must always disable fp/no-unused-expression
@@ -16,24 +22,28 @@ const enableLogging = (action, prevState, nextState) => {
   /* eslint-disable fp/no-unused-expression */
 
   console.group(
-    `%c${logTypes.ACTION_LABEL} @ ${format(Date.now(), timeFmt)} ${type}`,
+    `%c${ACTION_LABEL} @ ${timestamp} ${type}`,
     bold
   )
+
   console.log(
-    `%c${logTypes.PREV_STATE_LABEL}`,
-    `color: ${logTypes.PREV_STATE_COLOR}; ${bold}`,
-    prevStateJs
+    `%c${PREV_STATE_LABEL}`,
+    `color: ${PREV_STATE_COLOR}; ${bold}`,
+    toJs(prevState)
   )
+
   console.log(
-    `%c${logTypes.ACTION_LABEL}`,
-    `color: ${logTypes.ACTION_COLOR}; ${bold}`,
+    `%c${ACTION_LABEL}`,
+    `color: ${ACTION_COLOR}; ${bold}`,
     payload ? { type, payload } : { type }
   )
+
   console.log(
-    `%c${logTypes.NEXT_STATE_LABEL}`,
-    `color: ${logTypes.NEXT_STATE_COLOR}; ${bold}`,
-    nextStateJs
+    `%c${NEXT_STATE_LABEL}`,
+    `color: ${NEXT_STATE_COLOR}; ${bold}`,
+    toJs(nextState)
   )
+
   console.groupEnd()
 
   /* eslint-enable fp/no-unused-expression */

@@ -1,9 +1,8 @@
-import { partial, get, hashMap, merge } from 'mori'
+import { dec, inc, compose, partial } from 'ramda'
+import { get, hashMap, merge } from 'mori'
 import Actions from '../actions'
-import * as stateKeys from '../constants/stateKeys'
+import { COUNT } from '../constants/stateKeys'
 import { enableLogging } from '../utils/logger'
-import { dec, inc, compose } from 'ramda'
-// import { compose } from 'lodash/fp'
 
 /******************************************************************************
   Using a mori hashMap to hold app state
@@ -11,13 +10,13 @@ import { dec, inc, compose } from 'ramda'
 
 const reducer = (state, action) => {
   // get prev count value from existing state hashMap
-  const prevCount = get(state, stateKeys.COUNT)
+  const prevCount = get(state, COUNT)
 
   // partially apply state argument to make a reusable merge function
-  const mergeState = partial(merge, state)
+  const mergeState = partial(merge, [state])
 
   // partially apply key argument to make a reusable set function
-  const setCount = partial(hashMap, stateKeys.COUNT)
+  const setCount = partial(hashMap, [COUNT])
 
   // create reusable merge variants via functional composition
   const mergeSetCount = compose(mergeState, setCount)
@@ -33,6 +32,6 @@ const reducer = (state, action) => {
 }
 
 const reducerWithLogging = (state, action) =>
-  enableLogging(action, state, reducer(state, action))
+  enableLogging(state, action, reducer(state, action))
 
 export default reducerWithLogging
