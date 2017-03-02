@@ -2,7 +2,6 @@ import Actions from '../actions'
 import { COUNT } from '../constants/stateKeys'
 import { enableLogging } from '../utils/logger'
 import { dec, inc } from 'ramda'
-// import { compose } from 'lodash/fp'
 
 /******************************************************************************
   Using a plain JS object to hold app state
@@ -16,6 +15,6 @@ const reducer = (state, action) => Actions.case({
 }, action)
 
 const reducerWithLogging = (state, action) =>
-  enableLogging(action, state, reducer(state, action))
+  enableLogging(state, action, reducer(state, action))
 
 export default reducerWithLogging

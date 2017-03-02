@@ -9,7 +9,7 @@ import {
 import { format } from 'date-fns'
 
 // Logging
-const enableLogging = (action, prevState, nextState) => {
+const enableLogging = (prevState, action, nextState) => {
   const { _name: type, payload } = action
   const timeFmt = 'HH:mm:ss.SSS'
   const timestamp = format(Date.now(), timeFmt)
