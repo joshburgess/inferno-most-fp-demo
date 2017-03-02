@@ -5,29 +5,23 @@ import {
   Header,
   Textbox,
 } from '../../components'
-import { selectAction } from '../../utils'
-import { debounce, observe } from 'most'
-import { curry } from 'ramda'
-import { EDIT_TITLE } from '../../constants/actionTypes'
-import { editTitle, editTitleDebounced } from '../../actions'
+import { editSubtitle } from '../../actions'
+// ramda does not have debounce or throttle functions
+// alternatively, we could have used most's debounce function on a stream of
+// actions filtered for the EDIT_SUBTITLE acion type
+import { debounce } from 'lodash/fp'
 
-const selectEditTitle = selectAction(EDIT_TITLE)
-const debounce800 = curry(debounce)(800)
+// lodash/fp functions are auto-curried just like ramda
+const debounce400 = debounce(400)
+const debouncedEditSubtitle = debounce400(editSubtitle)
 
-const View = (action$, { count, subtitle, title }) => {
-  const editTitle$ = selectEditTitle(debounce800(action$))
-  const editTitleDebounced$ = debounce800(editTitle$)
-  observe(editTitleDebounced, editTitleDebounced$)
-
-  return (
-    <div className={'counter-demo'}>
-      <Header title={title} subtitle={subtitle} />
-      <Counter count={count} />
-      <div>
-        <Textbox label={'Edit title'} onInput={editTitle} />
-      </div>
+const View = ({ count, subtitle, title }) =>
+  <div className={'counter-demo'}>
+    <Header title={title} subtitle={subtitle} />
+    <Counter count={count} />
+    <div>
+      <Textbox label={'Edit subtitle'} onInput={debouncedEditSubtitle} />
     </div>
-  )
-}
+  </div>
 
 export default View

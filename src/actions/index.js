@@ -5,8 +5,7 @@ import {
   INCREMENT,
   DECREMENT,
   RESET,
-  EDIT_TITLE,
-  EDIT_TITLE_DEBOUNCED,
+  EDIT_SUBTITLE,
 } from '../constants/actionTypes'
 
 // Record types
@@ -19,8 +18,7 @@ const Actions = Type({
   [INCREMENT]: DefaultActionRecordType,
   [DECREMENT]: DefaultActionRecordType,
   [RESET]: DefaultActionRecordType,
-  [EDIT_TITLE]: PayloadActionRecordType,
-  [EDIT_TITLE_DEBOUNCED]: PayloadActionRecordType,
+  [EDIT_SUBTITLE]: PayloadActionRecordType,
 })
 
 // Action creators
@@ -28,9 +26,7 @@ export const init = () => dispatch(Actions[INIT]())
 export const increment = () => dispatch(Actions[INCREMENT]())
 export const decrement = () => dispatch(Actions[DECREMENT]())
 export const reset = () => dispatch(Actions[RESET]())
-export const editTitle = ({ target }) =>
-    dispatch(Actions[EDIT_TITLE](target.value))
-export const editTitleDebounced = ({ payload }) =>
-  dispatch(Actions[EDIT_TITLE_DEBOUNCED](payload))
+export const editSubtitle = ({ target }) =>
+    dispatch(Actions[EDIT_SUBTITLE](target.value))
 
 export default Actions
