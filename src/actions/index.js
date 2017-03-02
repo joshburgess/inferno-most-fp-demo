@@ -1,6 +1,6 @@
 import Type from 'union-type'
 import { dispatch } from '../'
-import * as actionTypes from '../constants/actionTypes'
+import { INIT, INCREMENT, DECREMENT, RESET } from '../constants/actionTypes'
 // import { curry } from 'ramda'
 // import { curry } from 'lodash/fp'
 

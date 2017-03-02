@@ -2,10 +2,7 @@ import { map, scan } from 'most'
 import reducer from './reducers'
 import { createDispatch, createStream, render } from './utils'
 import { Root } from './components'
-// import { curry } from 'ramda'
-// import { curry } from 'lodash/fp'
-import { get, toClj } from 'mori'
-import * as stateKeys from './constants/stateKeys'
+import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
 
 // Create stream of actions
 const action$ = createStream()
@@ -17,32 +14,13 @@ export const dispatch = createDispatch(action$)
   Using a plain JS object to hold app state
 *******************************************************************************/
 
-// const initialState = {
-//   [stateKeys.COUNT]: 0,
-//   [stateKeys.SUBTITLE]: 'Counter Demo',
-//   [stateKeys.TITLE]: 'Inferno + Most',
-// }
-
-// const mapStateToView = ({ title, subtitle, count }) => Root({ subtitle, title, count })
-
-/******************************************************************************
-  Using a mori hashMap to hold app state
-*******************************************************************************/
-
-const initialState = toClj({
-  [stateKeys.COUNT]: 0,
-  [stateKeys.SUBTITLE]: 'Counter Demo',
-  [stateKeys.TITLE]: 'Inferno + Most',
-})
-
-const mapStateToView = state => {
-  const getVal = key => get(state, key)
-  const subtitle = getVal(stateKeys.SUBTITLE)
-  const title = getVal(stateKeys.TITLE)
-  const count = getVal(stateKeys.COUNT)
-  return Root({ subtitle, title, count })
+const initialState = {
+  [COUNT]: 0,
+  [SUBTITLE]: 'Counter Demo',
+  [TITLE]: 'Inferno + Most',
 }
 
+const mapStateToView = ({ title, subtitle, count }) => Root({ subtitle, title, count })
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)
