@@ -10,16 +10,16 @@ const DefaultActionRecordType = { }
 
 // Actions
 const Actions = Type({
-  [actionTypes.INIT]: DefaultActionRecordType,
-  [actionTypes.INCREMENT]: DefaultActionRecordType,
-  [actionTypes.DECREMENT]: DefaultActionRecordType,
-  [actionTypes.RESET]: DefaultActionRecordType,
+  [INIT]: DefaultActionRecordType,
+  [INCREMENT]: DefaultActionRecordType,
+  [DECREMENT]: DefaultActionRecordType,
+  [RESET]: DefaultActionRecordType,
 })
 
 // Action creators
-export const init = () => dispatch(Actions[actionTypes.INIT]())
-export const increment = () => dispatch(Actions[actionTypes.INCREMENT]())
-export const decrement = () => dispatch(Actions[actionTypes.DECREMENT]())
-export const reset = () => dispatch(Actions[actionTypes.RESET]())
+export const init = () => dispatch(Actions[INIT]())
+export const increment = () => dispatch(Actions[INCREMENT]())
+export const decrement = () => dispatch(Actions[DECREMENT]())
+export const reset = () => dispatch(Actions[RESET]())
 
 export default Actions
