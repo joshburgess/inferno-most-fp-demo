@@ -17,7 +17,7 @@ const View = ({ count, subtitle, title }) =>
   div('.counter-demo', [
     Header({ title, subtitle }),
     Counter({ count }),
-    Textbox({ label: 'Edit subtitle', onInput: debouncedEditSubtitle }),
+    Textbox({ id: 'edit-subtitle', label: 'Edit subtitle', onInput: debouncedEditSubtitle }),
   ])
 
 export default View
