@@ -3,7 +3,10 @@ import Inferno from 'inferno'
 import { Button } from '../../components'
 import { increment, decrement, reset } from '../../actions'
 
-const resetStyle = { background: 'rgb(177, 136, 136)' }
+const resetStyle = {
+  background: 'rgb(177, 136, 136)',
+  margin: '40px 0',
+}
 
 const Counter = ({ title, subtitle, count }) =>
   <div>
