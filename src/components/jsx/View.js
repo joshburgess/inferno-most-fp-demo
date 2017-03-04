@@ -19,13 +19,12 @@ const View = ({ count, subtitle, title }) =>
   <div className={'counter-demo'}>
     <Header title={title} subtitle={subtitle} />
     <Counter count={count} />
-    <div>
-      <Textbox
-        id={'edit-subtitle'}
-        label={'Edit subtitle'}
-        onInput={debouncedEditSubtitle}
-      />
-    </div>
+    <Textbox
+      id={'edit-subtitle'}
+      label={'Edit subtitle'}
+      onInput={debouncedEditSubtitle}
+      placeholder={subtitle || 'Enter new subtitle here'}
+    />
   </div>
 
 export default View
