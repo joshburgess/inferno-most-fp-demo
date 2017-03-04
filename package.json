@@ -1,7 +1,7 @@
 {
   "name": "inferno-most-counter-demo",
   "version": "0.0.0",
-  "description": "A functional & reactive counter app built with Inferno & Most",
+  "description": "A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most.js, reactive programmning, and various other functional programming tools & techniques",
   "main": "src/index.js",
   "author": "Josh Burgess",
   "license": "MIT",
