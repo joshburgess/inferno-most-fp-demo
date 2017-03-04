@@ -1,6 +1,16 @@
 # inferno-most-counter-demo
 A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most.js, reactive programming, and various other functional programming tools & techniques
 
+
+## Instructions:
+
+```
+git clone https://github.com/joshburgess/inferno-most-counter-demo
+cd inferno-most-counter-demo
+yarn start
+```
+Then, open index.html in your browser.
+
 ## Notes:
 
 ### Two Separate Branches
@@ -15,7 +25,7 @@ You are currently viewing the `javascript` branch.
 
 ### Strict Linting
 
-This project makes heavy use of eslint to enforce a strict, functional style. The bulk of the rules come from [eslint-config-standard-pure-fp](https://github.com/joshburgess/eslint-config-standard-pure-fp), which is just a combination of [eslint-config-standard](https://github.com/feross/eslint-config-standard) & [eslint-config-cleanjs](https://github.com/bodil/eslint-config-cleanjs).
+This project makes heavy use of ESLint to enforce a strict, functional style. The bulk of the rules come from [eslint-config-standard-pure-fp](https://github.com/joshburgess/eslint-config-standard-pure-fp), which is just a combination of [eslint-config-standard](https://github.com/feross/eslint-config-standard) & [eslint-config-cleanjs](https://github.com/bodil/eslint-config-cleanjs).
 
 ### Functional Tools & Techniques
 
@@ -34,12 +44,3 @@ A more evolved, less Redux-like, & more reactive version of this demo might incl
 * Stop using lodash's `debounce` function to perform rate limiting. Instead, use most's `debounce` function, which operates on Observable streams rather than functions, keeping everything consistently using the reactive paradigm.
 
 * Start using Flow or TypeScript in order to reap the benefits of static type checking/analysis. Keep in mind that, although TypeScript seems to currently have the edge over Flow in terms of popularity & community activity, going with TypeScript means you will no longer be able to use ESLint, and TSLint is still missing a lot of rules & plugins available in the ESLint ecosystem. This is a downside of TypeScript being both a type checker and a compiler. It replaces a large amount of the tool chain, whereas Flow only adds type checking to standard JS semantics, allowing Flow users to continue using ESLint & Babel. This is a trade-off that might be worth it, but it's important to know that a trade-off exists when making that decision.
-
-## Instructions:
-
-```
-git clone https://github.com/joshburgess/inferno-most-counter-demo
-cd inferno-most-counter-demo
-yarn start
-```
-Then, open index.html in your browser.
