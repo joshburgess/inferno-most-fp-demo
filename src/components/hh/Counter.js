@@ -1,21 +1,20 @@
 // Use hypercscript + hyperscript-helpers
 import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
-const { br, div, h1 } = hh(h)
+const { div, h1 } = hh(h)
 import { Button } from '../../components'
 import { increment, decrement, reset } from '../../actions'
 
-const resetStyle = { background: 'rgb(177, 136, 136)' }
+const resetStyle = {
+  background: 'rgb(177, 136, 136)',
+  margin: '40px 0',
+}
 
 const Counter = ({ title, subtitle, count }) =>
-  div([
+  div('.centered', [
     Button({ text: 'Reset', clickHandler: reset, style: resetStyle }),
-    br(),
-    br(),
-    br(),
-    br(),
     Button({ text: '-', clickHandler: decrement }),
-    h1(count),
+    h1('', [count]),
     Button({ text: '+', clickHandler: increment }),
   ])
 
