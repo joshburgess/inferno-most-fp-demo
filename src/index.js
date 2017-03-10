@@ -1,5 +1,5 @@
 import Inferno from 'inferno'
-import { createDispatch, createStream, render } from './utils'
+import { createDispatch, createStream, render } from './framework'
 import { map, scan } from 'most'
 import { View } from './components'
 import reducer from './reducers'

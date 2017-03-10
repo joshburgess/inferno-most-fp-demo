@@ -4,12 +4,12 @@ import {
   render,
   selectAction,
 } from './core'
-import { enablelogging } from './logging'
+import { enableLogging } from './logging'
 
 export {
   createDispatch,
   createStream,
-  enablelogging,
+  enableLogging,
   render,
   selectAction,
 }

@@ -7,7 +7,7 @@ import {
   RESET,
   EDIT_SUBTITLE,
 } from '../constants/actionTypes'
-import { enableLogging } from '../utils/logger'
+import { enableLogging } from '../framework'
 
 /******************************************************************************
   Using a plain JS object to hold app state
