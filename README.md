@@ -25,7 +25,7 @@ You are currently viewing the `javascript` branch.
 
 ### JSX & Hyperscript (hyperscript-helpers)
 
-Each branch contains both a JSX version and a hyperscript version of each component. The hyperscript components specifically use hyperscript-helpers, which offers a concise syntax reminiscent of elm-html, purescript-halogen's HTML module, Fable's HTML module, etc.
+Each branch contains both a JSX version and a hyperscript version of each component. The hyperscript components specifically use hyperscript-helpers, which offers a concise syntax reminiscent of elm-html, purescript-halogen's HTML module, Fable's HTML module, etc., which I happen to like at least as much as JSX. I'm just trying to show that using or not using JSX shouldn't be a deal breaker. It's quite concise, clean, and easy to understand using either option.
 
 ### Strict Linting
 
