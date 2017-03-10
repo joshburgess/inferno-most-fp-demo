@@ -1,5 +1,5 @@
 # inferno-most-counter-demo
-A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most.js, reactive programming, and various other functional programming tools & techniques
+A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most, reactive programming, and various FP tools & techniques
 
 
 ## Instructions:
@@ -22,6 +22,10 @@ This repository features two separate branches showing the same concept:
 `mori`: This branch uses a mori hashMap (an immutable & persistent data structure) to store the global app state. [mori](https://github.com/swannodette/mori) is similar to [immutable-js](https://github.com/facebook/immutable-js), but features a more functional API & better performance.
 
 You are currently viewing the `javascript` branch.
+
+### JSX & Hyperscript (hyperscript-helpers)
+
+Each branch contains both a JSX version and a hyperscript version of each component. The hyperscript components specifically use hyperscript-helpers, which offers a concise syntax reminiscent of elm-html, purescript-halogen's HTML module, Fable's HTML module, etc.
 
 ### Strict Linting
 
