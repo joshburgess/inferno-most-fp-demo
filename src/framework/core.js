@@ -13,16 +13,14 @@ const createStream = async
 // giving Redux users the same API they are already familiar with
 const createDispatch = action$ => action => action$.next(action)
 
-// Render virtual DOM node changes to a DOM node as they stream in
-const scanRenderer = vTree$ =>
-  mountNode => drainScan(createRenderer(), mountNode, vTree$)
-
 // Dispatch INIT before rendering
 const logInit = curry(tap)(init)
 const logInitOnReady = compose(logInit, ready)
 
+// Render virtual DOM node changes to a DOM node as they stream in
+const infernoRenderer = createRenderer()
 const render = (vTree$, mountNode) =>
-  observe(() => scanRenderer(vTree$)(mountNode), logInitOnReady())
+  observe(() => drainScan(infernoRenderer, mountNode, vTree$), logInitOnReady())
 
 const selectAction = curry((actionType, stream) =>
   filter(({ _name }) => _name && _name === actionType, stream))
