@@ -1,7 +1,7 @@
 import { createRenderer } from 'inferno'
 import { filter, observe, tap } from 'most'
 import { async } from 'most-subject'
-import { drainScan, ready } from './custom-operators'
+import { drainScan, ready } from './utils'
 import { compose, curry } from 'ramda'
 import { init } from '../actions'
 

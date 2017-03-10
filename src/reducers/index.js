@@ -8,7 +8,7 @@ import {
   RESET,
   EDIT_SUBTITLE,
 } from '../constants/actionTypes'
-import { enableLogging } from '../utils/logger'
+import { enableLogging } from '../framework/logging'
 
 /******************************************************************************
   Using a mori hashMap to hold app state

@@ -1,5 +1,5 @@
 // import Inferno from 'inferno'
-import { createDispatch, createStream, render } from './utils'
+import { createDispatch, createStream, render } from './framework'
 import { map, scan } from 'most'
 import { get, toClj } from 'mori'
 import { partial } from 'ramda'

@@ -39,6 +39,7 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
+    "45": "^1.7.0",
     "creed": "^1.2.1",
     "date-fns": "^1.28.0",
     "hyperscript-helpers": "^3.0.2",
