@@ -27,6 +27,8 @@ You are currently viewing the `mori` branch.
 
 Each branch contains both a JSX version and a hyperscript version of each component. The hyperscript components specifically use hyperscript-helpers, which offers a concise syntax reminiscent of elm-html, purescript-halogen's HTML module, Fable's HTML module, etc.
 
+### Strict Linting
+
 This project makes heavy use of ESLint to enforce a strict, functional style. The bulk of the rules come from [eslint-config-standard-pure-fp](https://github.com/joshburgess/eslint-config-standard-pure-fp), which is just a combination of [eslint-config-standard](https://github.com/feross/eslint-config-standard) & [eslint-config-cleanjs](https://github.com/bodil/eslint-config-cleanjs).
 
 ### Functional Tools & Techniques
