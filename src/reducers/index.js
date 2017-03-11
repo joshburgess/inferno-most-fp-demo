@@ -25,7 +25,7 @@ const reducer = (state, action) => {
   const setCount = partial(hashMap, [COUNT])
   const setSubtitle = partial(hashMap, [SUBTITLE])
 
-  // alternatively, we could have defined the same reusable functions like this
+  // alternatively, we could have defined the same functionality like this
   // const mergeState = x => merge(state, x)
   // const setCount = x => toClj({ [COUNT]: x })
   // const setSubtitle = x => toClj({ [SUBTITLE]: x })
