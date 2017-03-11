@@ -1,5 +1,5 @@
 import { dec, inc, compose, partial } from 'ramda'
-import { get, hashMap, merge } from 'mori'
+import { get, hashMap, merge, toClj } from 'mori'
 import Actions from '../actions'
 import { COUNT, SUBTITLE } from '../constants/stateKeys'
 import {
@@ -21,9 +21,14 @@ const reducer = (state, action) => {
   // partially apply state argument to make a reusable merge function
   const mergeState = partial(merge, [state])
 
-  // partially apply key argument to make a reusable set functions
+  // partially apply key argument to make reusable set functions
   const setCount = partial(hashMap, [COUNT])
   const setSubtitle = partial(hashMap, [SUBTITLE])
+
+  // alternatively, we could have defined the same reusable functions like this
+  // const mergeState = x => merge(state, x)
+  // const setCount = x => toClj({ [COUNT]: x })
+  // const setSubtitle = x => toClj({ [SUBTITLE]: x })
 
   // create reusable merge variants via functional composition
   const mergeSetCount = compose(mergeState, setCount)
