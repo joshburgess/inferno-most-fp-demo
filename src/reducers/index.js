@@ -49,3 +49,6 @@ const reducerWithLogging = (state, action) =>
   enableLogging(state, action, reducer(state, action))
 
 export default reducerWithLogging
+
+// Or export the reducer directly to turn off logging
+// export default reducer
