@@ -449,12 +449,12 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-inferno@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-1.9.0.tgz#b8f5b4591577f590d78bd18e2e3e8c8c5c1f6e73"
+babel-plugin-inferno@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-2.0.0.tgz#57c73b2a4f95119c44bea639e884187f9ee8d1a4"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
-    inferno-vnode-flags "1.3.0-rc.1"
+    inferno-vnode-flags "1.3.0"
 
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
@@ -770,6 +770,14 @@ babel-plugin-transform-strict-mode@^6.18.0, babel-plugin-transform-strict-mode@^
   dependencies:
     babel-runtime "^6.22.0"
     babel-types "^6.22.0"
+
+babel-polyfill@^6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.23.0.tgz#8364ca62df8eafb830499f699177466c3b03499d"
+  dependencies:
+    babel-runtime "^6.22.0"
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
 
 babel-preset-es2015@^6.22.0:
   version "6.22.0"
@@ -1657,22 +1665,22 @@ eslint-config-standard-jsx@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-3.3.0.tgz#cab0801a15a360bf63facb97ab22fbdd88d8a5e0"
 
-eslint-config-standard-pure-fp@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard-pure-fp/-/eslint-config-standard-pure-fp-1.0.4.tgz#8fbca0cf7900cd3913688e4ed3ae4f08a00502e2"
+eslint-config-standard-pure-fp@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard-pure-fp/-/eslint-config-standard-pure-fp-2.0.1.tgz#6ef77354eba1c4eb716875c56379759d119a6ad8"
   dependencies:
     eslint-config-cleanjs "^4.0.0"
-    eslint-config-standard "^6.1.0"
+    eslint-config-standard "^7.0.0"
 
-eslint-config-standard-react@4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard-react/-/eslint-config-standard-react-4.2.0.tgz#d15fd25e837e20aff0db32f64fb55d11880eb8d0"
+eslint-config-standard-react@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard-react/-/eslint-config-standard-react-4.3.0.tgz#7e0d3575f15a3c0b6639ccb63949dfb5ba3a0a8a"
   dependencies:
     eslint-config-standard-jsx "^3.0.0"
 
-eslint-config-standard@^6.1.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-6.2.1.tgz#d3a68aafc7191639e7ee441e7348739026354292"
+eslint-config-standard@^7.0.0:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-7.0.1.tgz#6cec96084de9ac862c33ccb953d13a7c59872342"
 
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
@@ -1747,9 +1755,9 @@ eslint-plugin-react@^6.10.0:
     jsx-ast-utils "^1.3.4"
     object.assign "^4.0.4"
 
-eslint-plugin-standard@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-2.0.1.tgz#3589699ff9c917f2c25f76a916687f641c369ff3"
+eslint-plugin-standard@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-2.1.1.tgz#97960b1537e1718bb633877d0a650050effff3b0"
 
 eslint@^3.16.1:
   version "3.17.1"
@@ -1915,9 +1923,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flow-bin@^0.40.0:
-  version "0.40.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.40.0.tgz#e10d60846d923124e47f548f16ba60fd8baff5a5"
+flow-bin@^0.41.0:
+  version "0.41.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.41.0.tgz#8badac9a19da45004997e599bd316518db489b2e"
 
 fluture@^5.0.0:
   version "5.0.0"
@@ -2216,11 +2224,7 @@ inferno-shared@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-1.3.0.tgz#3994b373fd16a0fc02aef6b12503f790b1eddddc"
 
-inferno-vnode-flags@1.3.0-rc.1:
-  version "1.3.0-rc.1"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-1.3.0-rc.1.tgz#2f027cdb70db496708eeaaf30b54962b727adf85"
-
-inferno-vnode-flags@^1.3.0:
+inferno-vnode-flags@1.3.0, inferno-vnode-flags@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-1.3.0.tgz#d2fca602325e276146f99ddcdfe97b3a2506426f"
 

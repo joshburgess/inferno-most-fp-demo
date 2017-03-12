@@ -1,9 +1,17 @@
+// Supply polyfills for older browsers
+import 'babel-polyfill'
+// Overwrite Promise implementation with Creed for better performance
+import { shim } from 'creed'
+shim() // eslint-disable-line fp/no-unused-expression
+
 import Inferno from 'inferno'
-import { createDispatch, createStream, render } from './framework'
-import { map, scan } from 'most'
+import { createDispatch, createStream, render, withCallback } from './framework'
+import { delay, map, observe, scan } from 'most'
+import { curry } from 'ramda'
 import { View } from './components'
 import reducer from './reducers'
 import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
+import { setupEventHandling } from './actions'
 
 // Create stream of actions
 const action$ = createStream()
@@ -21,9 +29,10 @@ const initialState = {
   [TITLE]: 'Inferno + Most',
 }
 
-// Use mapStateToView if using JSX or just use the View function directly
-const mapStateToView = ({ count, subtitle, title }) =>
-  <View count={count} subtitle={subtitle} title={title} />
+// const mapStateToView = (props) =>
+//   <View {...props} onComponentDidMount={setupEventHandling} />
+
+const mapStateToView = withCallback(setupEventHandling)(View)
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)

@@ -1,7 +1,8 @@
-import { createRenderer } from 'inferno'
-import { observe, tap } from 'most'
+import { createRenderer, createVNode } from 'inferno'
+import { ComponentFunction } from 'inferno-vnode-flags'
+import { delay, observe, tap } from 'most'
 import { async } from 'most-subject'
-import { drainScan, ready } from './utils'
+import { drainScan, first, ready } from './utils'
 import { init } from '../actions'
 import { compose, curry } from 'ramda'
 
@@ -22,12 +23,27 @@ const infernoRenderer = createRenderer()
 const render = (vTree$, mountNode) =>
   observe(() => drainScan(infernoRenderer, mountNode, vTree$), logInitOnReady())
 
+// Utility function for filtering the action$ for a specific action
 const selectAction = curry((actionType, stream) =>
   filter(({ _name }) => _name && _name === actionType, stream))
+
+// Higher order component utility which applies a callback function
+const withCallback = curry((callback, component, props) => createVNode(
+  ComponentFunction, // flags
+  component, // type
+  props, // props
+  null, // children
+  null,  // events
+  null, // key
+  { onComponentDidMount: callback }, // refs
+  false // isNormalized
+))
 
 export {
   createDispatch,
   createStream,
+  ready,
   render,
   selectAction,
+  withCallback,
 }

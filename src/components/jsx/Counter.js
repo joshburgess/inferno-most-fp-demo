@@ -1,7 +1,6 @@
 // Use JSX
 import Inferno from 'inferno'
 import { Button } from '../../components'
-import { increment, decrement, reset } from '../../actions'
 
 const resetStyle = {
   background: 'rgb(177, 136, 136)',
@@ -10,10 +9,10 @@ const resetStyle = {
 
 const Counter = ({ title, subtitle, count }) =>
   <div>
-    <Button text='Reset' clickHandler={reset} style={resetStyle} />
-    <Button text='-' clickHandler={decrement} />
+    <Button text='Reset' id='reset-btn' style={resetStyle} />
+    <Button text='-' id='increment-btn' />
     <h1>{count}</h1>
-    <Button text='+' clickHandler={increment} />
+    <Button text='+' id='decrement-btn' />
   </div>
 
 export default Counter

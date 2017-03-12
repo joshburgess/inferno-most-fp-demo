@@ -3,7 +3,7 @@ import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div } = hh(h)
 
-const Button = ({ text, clickHandler, style }) =>
-  div('.counter-btn', { onClick: clickHandler, style }, text)
+const Button = ({ id, style, text }) =>
+  div(`#${id}.counter-btn`, { style }, text)
 
 export default Button
