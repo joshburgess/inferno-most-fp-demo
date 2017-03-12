@@ -55,17 +55,55 @@ export const setupEventHandling = () => {
   const fromInput = fromEventCaptureFalse('input')
   const fromClick = fromEventCaptureFalse('click')
 
+  const editSubtitleInput$ = fromInput(editSubtitleTextbox)
+  const resetClick$ = fromClick(resetButton)
+  const incrementClick$ = fromClick(incrementButton)
+  const decrementClick$ = fromClick(decrementButton)
+
+  const debounce400 = curry(debounce)(400)
+  const debouncedEditSubtitleInput$ = debounce400(editSubtitleInput$)
+
   // NOTE: Effectful code must always disable fp/no-unused-expression
   // This is fine. Use the linter to stay disciplined.
 
   /* eslint-disable fp/no-unused-expression */
 
-  observe(editSubtitle, fromInput(editSubtitleTextbox))
-  observe(reset, fromClick(resetButton))
-  observe(increment, fromClick(incrementButton))
-  observe(decrement, fromClick(decrementButton))
+  observe(editSubtitle, debouncedEditSubtitleInput$)
+  observe(reset, resetClick$)
+  observe(increment, incrementClick$)
+  observe(decrement, decrementClick$)
 
   /* eslint-enable fp/no-unused-expression */
-  
+
+
+  const toColor = num => parseInt(num * 255, 10)
+
+  const windowResize$ = () => fromEvent(window, 'resize')
+    .map({ target } => ({
+      width: target.innerWidth,
+      height: target.innerHeight,
+    }))
+
+  const ratioToRgb = ({ rRatio, gRatio, bRatio }) => ({
+      r: toColor(rRatio),
+      g: toColor(gRatio),
+      b: toColor(bRatio),
+    })
+
+  const pointToRatioGivenWindowSize = ({ width, height }) =>
+    ({ x, y }) => ({
+      rRatio: x / width,
+      gRatio: y / height,
+      bRatio: 0.5,
+    })
+
+  const mouseColor$ = windowSize => {
+    const pointToRatio = pointToRatioGivenWindowSize(windowSize)
+    return fromEvent(window, 'mousemove')
+      .map((clientX, clientY) => ({ x: clientX, y: clientY }))
+      .map(pointToRatio)
+      .map(ratioToRgbMouse)
+  }
+
   return observeEventStreams()
 }
