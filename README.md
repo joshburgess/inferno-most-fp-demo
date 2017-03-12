@@ -13,13 +13,15 @@ Then, open index.html in your browser.
 
 ## Notes:
 
-### Two Separate Branches
+### Three Separate Branches
 
 This repository features two separate branches showing the same concept:
 
-`javascript`: This branch uses a plain JS object to store the global app state. This is the default branch you will be on when first cloning the repository. There is no master branch.
+1. `javascript`: This branch uses a plain JS object to store the global app state. This is the default branch you will be on when first cloning the repository. There is no master branch.
 
-`mori`: This branch uses a mori hashMap (an immutable & persistent data structure) to store the global app state. [mori](https://github.com/swannodette/mori) is similar to [immutable-js](https://github.com/facebook/immutable-js), but features a more functional API & better performance.
+2. `mori`: This branch uses a mori hashMap (an immutable & persistent data structure) to store the global app state. [mori](https://github.com/swannodette/mori) is similar to [immutable-js](https://github.com/facebook/immutable-js), but features a more functional API & better performance.
+
+3. `event-streams`: This branch is a continuation of the `javascript` branch demonstrating how the architecture could be rewritten to use event streams for handling events rather than directly assigning handlers to the components. This helps to further decouple events from component rendering and opens up new possibilities via composition & transformation of streams.
 
 You are currently viewing the `javascript` branch.
 
@@ -41,10 +43,12 @@ It is important to note that the architecture design demonstrated here was inten
 
 A more evolved, less Redux-like, & more reactive version of this demo might include doing the following:
 
+* ~~Stop assigning event handlers via Inferno (or React) component props. Instead, use most's `fromEvent` function to create declarative data flow pipelines. `fromEvent` takes in an event & a CSS selector and returns a stream of events that you can filter, combine with other streams, & transform in various ways.~~
+
+* ~~Stop using lodash's `debounce` function to perform rate limiting. Instead, use most's `debounce` function, which operates on Observable streams rather than functions, keeping everything consistently using the reactive paradigm.~~
+
+Note: The above changes have now been made. See the `event-streams` branch.
+
 * Stop using most-subject & the `dispatch` function. Using Subjects to dispatch Actions is an imperative construct, and we'd like to be as declarative and reactive as possible.
-
-* Stop assigning event handlers via Inferno (or React) component props. Instead, use most's `fromEvent` function to create declarative data flow pipelines. `fromEvent` takes in an event & a CSS selector and returns a stream of events that you can filter, combine with other streams, & transform in various ways.
-
-* Stop using lodash's `debounce` function to perform rate limiting. Instead, use most's `debounce` function, which operates on Observable streams rather than functions, keeping everything consistently using the reactive paradigm.
 
 * Start using Flow or TypeScript in order to reap the benefits of static type checking/analysis. Keep in mind that, although TypeScript seems to currently have the edge over Flow in terms of popularity & community activity, going with TypeScript means you will no longer be able to use ESLint, and TSLint is still missing a lot of rules & plugins available in the ESLint ecosystem. This is a downside of TypeScript being both a type checker and a compiler. It replaces a large amount of the tool chain, whereas Flow only adds type checking to standard JS semantics, allowing Flow users to continue using ESLint & Babel. This is a trade-off that might be worth it, but it's important to know that a trade-off exists when making that decision.
