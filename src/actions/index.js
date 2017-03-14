@@ -9,8 +9,13 @@ import {
 } from '../constants/actionTypes'
 
 // Record types
-const DefaultActionRecordType = { }
-const PayloadActionRecordType = { payload: String }
+const DefaultActionRecordType = {
+  // type: String,
+}
+const PayloadActionRecordType = {
+  // type: String,
+  payload: String,
+}
 
 // Actions
 const Actions = Type({
