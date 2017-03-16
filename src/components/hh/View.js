@@ -20,6 +20,12 @@ const View = ({ count, subtitle, title }) =>
     Textbox({
       id: 'edit-subtitle',
       label: 'Edit subtitle',
+      onInput: editSubtitle,
+      placeholder: subtitle || 'Enter new subtitle here',
+    }),
+    Textbox({
+      id: 'debounced-edit-subtitle',
+      label: 'Edit subtitle (Debounced)',
       onInput: debouncedEditSubtitle,
       placeholder: subtitle || 'Enter new subtitle here',
     }),

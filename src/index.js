@@ -22,8 +22,7 @@ const initialState = {
 }
 
 // Use mapStateToView if using JSX or just use the View function directly
-const mapStateToView = ({ count, subtitle, title }) =>
-  <View count={count} subtitle={subtitle} title={title} />
+const mapStateToView = (props) => <View {...props} />
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)

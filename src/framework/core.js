@@ -1,4 +1,5 @@
-import { createRenderer } from 'inferno'
+// import Inferno, { createRenderer } from 'inferno'
+import Inferno from 'inferno'
 import { observe, tap } from 'most'
 import { async } from 'most-subject'
 import { drainScan, ready } from './utils'
@@ -18,9 +19,19 @@ const logInit = curry(tap)(init)
 const logInitOnReady = compose(logInit, ready)
 
 // Render virtual DOM node changes to a DOM node as they stream in
-const infernoRenderer = createRenderer()
-const render = (vTree$, mountNode) =>
-  observe(() => drainScan(infernoRenderer, mountNode, vTree$), logInitOnReady())
+// const infernoRenderer = createRenderer()
+// const render = (vTree$, mountNode) =>
+//   observe(() => drainScan(infernoRenderer, mountNode, vTree$), logInitOnReady())
+
+// const createRenderer = node => component =>
+//   Inferno.render(component, node)
+
+const createRenderer = (parentDom) => (lastInput, nextInput) => {
+  if (!parentDom) {
+		parentDom = lastInput
+	}
+	Inferno.render(nextInput, parentDom)
+}
 
 const selectAction = curry((actionType, stream) =>
   filter(({ _name }) => _name && _name === actionType, stream))
