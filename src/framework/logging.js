@@ -15,7 +15,7 @@ const enableLogging = (prevState, action, nextState) => {
   const timestamp = format(Date.now(), timeFmt)
   const bold = 'font-weight: bold;'
 
-  // NOTE: Effectful code must always disable fp/no-unused-expression
+  // NOTE: Side effect causing code must disable fp/no-unused-expression
   // This is fine. Use the linter to stay disciplined.
 
   /* eslint-disable fp/no-unused-expression */
