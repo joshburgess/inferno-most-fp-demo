@@ -38,7 +38,7 @@ const mapStateToView = state => {
 const state$ = scan(reducer, initialState, action$)
 const vTree$ = map(mapStateToView, state$)
 
-// NOTE: Effectful code must always disable fp/no-unused-expression
+// NOTE: Side effect causing code must disable fp/no-unused-expression
 // This is fine. Use the linter to stay disciplined.
 
 /* eslint-disable fp/no-unused-expression */
