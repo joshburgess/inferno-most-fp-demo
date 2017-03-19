@@ -53,13 +53,42 @@ const curry = f => function g (...args) {
     : (...rest) => g(...args, ...rest)
 }
 
+// workhorse array functions implemented by wrapping & currying JavaScript's
+// native array methods in order to get an API supporting functional composition
+const map = curry2((f, arr) => arr.map(f))
+const filter = curry2((f, arr) => arr.filter(f))
+const reduce = curry2((f, arr) => arr.reduce(f))
+const reduceR = curry2((f, arr) => arr.reduceRight(f))
+
+const head = arr => arr[0]
+const tail = arr => arr[arr.length - 1]
+
+const sliceFrom = curry2((start, arr) => arr.slice(start))
+const sliceFromTo = curry3((start, end, arr) => arr.slice(start, end))
+
+const withoutHead = sliceFrom(1)
+const withoutTail = sliceFromTo(0, -1)
+
+const concat = (...arrs) => head(arrs).concat(withoutHead(arrs))
+
+const copy = map(identity)
+const reverse = arr => arr.reverse()
+
+const sortBy = curry2((f, arr) => arr.sort(f))
+const sortByAlpha = arr => arr.sort()
+const sortByAlphaDesc = arr => reverse(sortByAlpha(arr))
+const sortByNum = sortBy((a, b) => a - b)
+const sortByNumDesc = sortBy((a, b) => b - a)
+const sortByLen = sortBy((a, b) => a.length - b.length)
+const sortByLenDesc = sortBy((a, b) => b.length - a.length)
+
 // compose functions for when the function arity is known
 const compose2 = (f, g) => (...args) => f(g(...args))
 const compose3 = (f, g, h) => (...args) => f(compose2(g, h)(...args))
 const compose4 = (f, g, h, i) => (...args) => f(compose3(g, h, i)(...args))
 
 // compose function for when the function arity is unknown
-const compose = (...fs) => [...fs].reduce(compose2)
+const compose = (...fs) => reduce(compose2, [...fs])
 
 // pipe functions for when the function arity is known
 const pipe2 = (f, g) => (...args) => compose2(g, f)(...args)
@@ -67,7 +96,7 @@ const pipe3 = (f, g, h) => (...args) => compose3(h, g, f)(...args)
 const pipe4 = (f, g, h, i) => (...args) => compose4(i, h, g, f)(...args)
 
 // pipe function for when the function arity is unknown
-const pipe = (...fs) => [...fs].reduce(pipe2)
+const pipe = (...fs) => reduce(pipe2, [...fs])
 
 // curried add functions for when the function arity is known
 const add2 = curry2((a, b) => Number(a) + Number(b))
@@ -75,7 +104,7 @@ const add3 = curry3((a, b, c) => add2(a, b) + Number(c))
 const add4 = curry4((a, b, c, d) => add3(a, b, c) + Number(d))
 
 // add function for when the function arity is unknown
-const add = (...args) => [...args].reduce(add2)
+const add = (...args) => reduce(add2, [...args])
 
 // increment & decrement functions
 const inc = add2(1)
@@ -87,7 +116,7 @@ const mult3 = curry3((a, b, c) => mult2(a, b) * Number(c))
 const mult4 = curry4((a, b, c, d) => mult3(a, b, c) * Number(d))
 
 // multiply function for when the function arity is unknown
-const mult = (...args) => [...args].reduce(mult2)
+const mult = (...args) => reduce(mult2, [...args])
 
 // double, triple, & square functions
 const doub = mult2(2)
@@ -103,7 +132,7 @@ const sub3 = curry3((a, b, c) => add3(a, neg(b), neg(c)))
 const sub4 = curry4((a, b, c, d) => add4(a, neg(b), neg(c), neg(d)))
 
 // subtract function for when the function arity is unknown
-const sub = (...args) => [...args].reduce(sub2)
+const sub = (...args) => reduce(sub2, [...args])
 
 // reciprocal function  (multiplicative inversion)
 const recip = x => (1 / Number(x))
@@ -114,10 +143,10 @@ const div3 = curry3((a, b, c) => mult3(a, recip(b), recip(c)))
 const div4 = curry4((a, b, c, d) => mult4(a, recip(b), recip(c), recip(d)))
 
 // divide function for when the function arity is unknown
-const div = (...args) => [...args].reduce(div2)
+const div = (...args) => reduce(div2, [...args])
 
 // power function for when the function arity is unknown
-const pow = (...args) => [...args].reduce(Math.pow)
+const pow = (...args) => reduce(Math.pow, [...args])
 
 export {
   identity,
@@ -129,6 +158,26 @@ export {
   curry3,
   curry4,
   curry,
+  map,
+  filter,
+  reduce,
+  reduceR,
+  head,
+  tail,
+  sliceFrom,
+  sliceFromTo,
+  withoutHead,
+  withoutTail,
+  concat,
+  copy,
+  reverse,
+  sortBy,
+  sortByAlpha,
+  sortByAlphaDesc,
+  sortByNum,
+  sortByNumDesc,
+  sortByLen,
+  sortByLenDesc,
   compose2,
   compose3,
   compose4,
