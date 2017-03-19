@@ -10,7 +10,7 @@
 const identity = x => x
 
 // curry functions for when the function arity is known
-function curry4 (f) {
+function curry2 (f) {
   return function g (a, b) {
     return ({
       0: g,
@@ -19,7 +19,7 @@ function curry4 (f) {
   }
 }
 
-function curry4 (f) {
+function curry3 (f) {
   return function g (a, b, c) {
     return ({
       0: g,
@@ -52,13 +52,13 @@ function curry (f) {
 }
 
 // simple application of a function to a single argument
-const apply1 = (f, x) => f(x)
+// const apply1 = (f, x) => f(x)
 
 // application of a function to a variable amount of arguments
 // const apply = (f, ...args) => f(...args)
 
 // partial application of a function to to a single argument
-const partial1 = (f, x) => y => f(x, y)
+// const partial1 = (f, x) => y => f(x, y)
 
 // partial application of a function to a variable amount of arguments
 const partial = (f, ...args) => (...rest) => f(...args, ...rest)
@@ -84,21 +84,21 @@ const dec = add2(-1)
 const mult2 = curry2((a, b) => Number(a) * Number(b))
 const double = x => (mult2(x)(2))
 
-function getArityFunction (n, fn) {
-  return ({
-    0: function () { return fn.apply(this, arguments) },
-    1: function (a0) { return fn.apply(this, arguments) },
-    2: function (a0, a1) { return fn.apply(this, arguments) },
-    3: function (a0, a1, a2) { return fn.apply(this, arguments) },
-    4: function (a0, a1, a2, a3) { return fn.apply(this, arguments) },
-    5: function (a0, a1, a2, a3, a4) { return fn.apply(this, arguments) },
-    6: function (a0, a1, a2, a3, a4, a5) { return fn.apply(this, arguments) },
-    7: function (a0, a1, a2, a3, a4, a5, a6) { return fn.apply(this, arguments) },
-    8: function (a0, a1, a2, a3, a4, a5, a6, a7) { return fn.apply(this, arguments) },
-    9: function (a0, a1, a2, a3, a4, a5, a6, a7, a8) { return fn.apply(this, arguments) },
-    10: function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) { return fn.apply(this, arguments) },
-  })[n] // || throw new Error('First argument to getArityFunction must be a non-negative integer no greater than ten')
-}
+// function getArityFunction (n, fn) {
+//   return ({
+//     0: function () { return fn.apply(this, arguments) },
+//     1: function (a0) { return fn.apply(this, arguments) },
+//     2: function (a0, a1) { return fn.apply(this, arguments) },
+//     3: function (a0, a1, a2) { return fn.apply(this, arguments) },
+//     4: function (a0, a1, a2, a3) { return fn.apply(this, arguments) },
+//     5: function (a0, a1, a2, a3, a4) { return fn.apply(this, arguments) },
+//     6: function (a0, a1, a2, a3, a4, a5) { return fn.apply(this, arguments) },
+//     7: function (a0, a1, a2, a3, a4, a5, a6) { return fn.apply(this, arguments) },
+//     8: function (a0, a1, a2, a3, a4, a5, a6, a7) { return fn.apply(this, arguments) },
+//     9: function (a0, a1, a2, a3, a4, a5, a6, a7, a8) { return fn.apply(this, arguments) },
+//     10: function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) { return fn.apply(this, arguments) },
+//   })[n] // || throw new Error('First argument to getArityFunction must be a non-negative integer no greater than ten')
+// }
 
 export {
   identity,
@@ -106,8 +106,8 @@ export {
   curry3,
   curry4,
   curry,
-  apply1,
-  apply,
+  // apply1,
+  // apply,
   partial,
   compose2,
   compose3,

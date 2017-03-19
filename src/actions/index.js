@@ -1,6 +1,19 @@
 import Type from 'union-type'
-import { debounce, fromEvent, observe } from 'most'
-import { __, curry } from 'ramda'
+import {
+  combine,
+  debounce,
+  map,
+  observe,
+  startWith,
+  throttle,
+} from 'most'
+import {
+  click,
+  input,
+  mousemove,
+  resize,
+} from '@most/dom-event'
+import { curry } from 'ramda'
 import { dispatch } from '../'
 import {
   INIT,
@@ -9,25 +22,33 @@ import {
   DECREMENT,
   RESET,
   EDIT_SUBTITLE,
+  UPDATE_RGB,
 } from '../constants/actionTypes'
 
 // Record types
-const DefaultActionRecordType = {
+const DefaultAction = {
   // type: String,
 }
-const PayloadActionRecordType = {
+
+const ActionWithStringPayload = {
   // type: String,
   payload: String,
 }
 
+const ActionWithObjectPayload = {
+  // type: String,
+  payload: Object,
+}
+
 // Actions
 const Actions = Type({
-  [INIT]: DefaultActionRecordType,
-  [OBSERVE_EVENT_STREAMS]: DefaultActionRecordType,
-  [INCREMENT]: DefaultActionRecordType,
-  [DECREMENT]: DefaultActionRecordType,
-  [RESET]: DefaultActionRecordType,
-  [EDIT_SUBTITLE]: PayloadActionRecordType,
+  [INIT]: DefaultAction,
+  [OBSERVE_EVENT_STREAMS]: DefaultAction,
+  [INCREMENT]: DefaultAction,
+  [DECREMENT]: DefaultAction,
+  [RESET]: DefaultAction,
+  [EDIT_SUBTITLE]: ActionWithStringPayload,
+  [UPDATE_RGB]: ActionWithObjectPayload,
 })
 
 export default Actions
@@ -40,6 +61,7 @@ const decrement = () => dispatch(Actions[DECREMENT]())
 const reset = () => dispatch(Actions[RESET]())
 const editSubtitle = ({ target }) =>
   dispatch(Actions[EDIT_SUBTITLE](target.value))
+const updateRgb = rgb => dispatch(Actions[UPDATE_RGB](rgb))
 
 // Setup event handling
 export const setupEventHandling = () => {
@@ -48,22 +70,81 @@ export const setupEventHandling = () => {
   const incrementButton = document.getElementById('increment-btn')
   const decrementButton = document.getElementById('decrement-btn')
 
-  // Use ramda's __ "placeholder" to partially apply fromEvent's optional 3rd
-  // argument (capture) in order to facilitate creating reusable functions that
-  // only need to be passed a DOM element
-  const fromEventCaptureFalse = curry(fromEvent)(__, __, false)
-  const fromInput = fromEventCaptureFalse('input')
-  const fromClick = fromEventCaptureFalse('click')
-
-  const editSubtitleInput$ = fromInput(editSubtitleTextbox)
-  const resetClick$ = fromClick(resetButton)
-  const incrementClick$ = fromClick(incrementButton)
-  const decrementClick$ = fromClick(decrementButton)
+  const editSubtitleInput$ = input(editSubtitleTextbox)
+  const resetClick$ = click(resetButton)
+  const incrementClick$ = click(incrementButton)
+  const decrementClick$ = click(decrementButton)
 
   const debounce400 = curry(debounce)(400)
   const debouncedEditSubtitleInput$ = debounce400(editSubtitleInput$)
 
-  // NOTE: Effectful code must always disable fp/no-unused-expression
+  const getWindowSize = () => {
+    const computedStyle = getComputedStyle(document.querySelector('body'))
+
+    return {
+      height: parseFloat(computedStyle.getPropertyValue('height')),
+      width: parseFloat(computedStyle.getPropertyValue('width')),
+    }
+  }
+
+  const resize$ = resize(window)
+
+  const toDimensions = ({ target }) => ({
+    height: target.innerHeight,
+    width: target.innerWidth,
+  })
+
+  const initWindowSize = getWindowSize()
+
+  const randomNumInRange = (min, max) =>
+    parseFloat(Math.random() * (max - min) + min, 10)
+
+  const toColor = num => parseInt(num * 255, 10)
+
+  const ratioToRgb = ({ rRatio, gRatio, bRatio }) => ({
+    r: toColor(rRatio),
+    g: toColor(gRatio),
+    b: toColor(bRatio),
+  })
+
+  // constant green ratio on each page refresh
+  // const randomRatio = randomNumInRange(0, 1)
+
+  const dimensionsToPointToRatio = ({ width, height }) =>
+    ({ x, y }) => ({
+      rRatio: x / width,
+      gRatio: randomNumInRange(0, 1), // random ratio for all new coords
+      bRatio: y / height,
+    })
+
+  const toCoords = ({ clientX, clientY }) => ({ x: clientX, y: clientY })
+
+  const getRandomCoords = ({ width, height }) => ({
+    x: randomNumInRange(0, width),
+    y: randomNumInRange(0, height),
+  })
+
+  const randomCoords = getRandomCoords(initWindowSize)
+
+  const dimensions$ = map(toDimensions, resize$)
+  const dimensionsWithInit$ = startWith(initWindowSize, dimensions$)
+
+  const mousemove$ = mousemove(document)
+
+  const coords$ = map(toCoords, mousemove$)
+  const coordsWithInit$ = startWith(randomCoords, coords$)
+
+  const pointToRatio = (dimensions, coords) =>
+    dimensionsToPointToRatio(dimensions)(coords)
+
+  const ratio$ = combine(pointToRatio, dimensionsWithInit$, coordsWithInit$)
+  const rgb$ = map(ratioToRgb, ratio$)
+
+  const throttle150 = curry(throttle)(150)
+
+  const throttledRgb$ = throttle150(rgb$)
+
+  // NOTE: Side effect causing code must disable fp/no-unused-expression
   // This is fine. Use the linter to stay disciplined.
 
   /* eslint-disable fp/no-unused-expression */
@@ -72,38 +153,9 @@ export const setupEventHandling = () => {
   observe(reset, resetClick$)
   observe(increment, incrementClick$)
   observe(decrement, decrementClick$)
+  observe(updateRgb, throttledRgb$)
 
   /* eslint-enable fp/no-unused-expression */
-
-
-  const toColor = num => parseInt(num * 255, 10)
-
-  const windowResize$ = () => fromEvent(window, 'resize')
-    .map({ target } => ({
-      width: target.innerWidth,
-      height: target.innerHeight,
-    }))
-
-  const ratioToRgb = ({ rRatio, gRatio, bRatio }) => ({
-      r: toColor(rRatio),
-      g: toColor(gRatio),
-      b: toColor(bRatio),
-    })
-
-  const pointToRatioGivenWindowSize = ({ width, height }) =>
-    ({ x, y }) => ({
-      rRatio: x / width,
-      gRatio: y / height,
-      bRatio: 0.5,
-    })
-
-  const mouseColor$ = windowSize => {
-    const pointToRatio = pointToRatioGivenWindowSize(windowSize)
-    return fromEvent(window, 'mousemove')
-      .map((clientX, clientY) => ({ x: clientX, y: clientY }))
-      .map(pointToRatio)
-      .map(ratioToRgbMouse)
-  }
 
   return observeEventStreams()
 }

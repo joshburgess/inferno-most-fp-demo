@@ -14,7 +14,7 @@ const Counter = ({ title, subtitle, count }) =>
     Button({ id: 'reset-btn', text: 'Reset', style: resetStyle }),
     Button({ id: 'decrement-btn', text: '-' }),
     h1('', [count]),
-    Button({ id:'increment-btn', text: '+' }),
+    Button({ id: 'increment-btn', text: '+' }),
   ])
 
 export default Counter

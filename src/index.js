@@ -4,13 +4,22 @@ import 'babel-polyfill'
 import { shim } from 'creed'
 shim() // eslint-disable-line fp/no-unused-expression
 
-import Inferno from 'inferno'
-import { createDispatch, createStream, render, withCallback } from './framework'
-import { delay, map, observe, scan } from 'most'
-import { curry } from 'ramda'
+// import Inferno from 'inferno'
+import {
+  createDispatch,
+  createStream,
+  render,
+  withLifecycle,
+} from './framework'
+import { map, scan } from 'most'
 import { View } from './components'
 import reducer from './reducers'
-import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
+import {
+  COUNT,
+  RGB,
+  SUBTITLE,
+  TITLE,
+} from './constants/stateKeys'
 import { setupEventHandling } from './actions'
 
 // Create stream of actions
@@ -27,16 +36,18 @@ const initialState = {
   [COUNT]: 0,
   [SUBTITLE]: 'Counter Demo',
   [TITLE]: 'Inferno + Most',
+  [RGB]: { r: 136, g: 139, b: 177 },
 }
 
 // const mapStateToView = (props) =>
 //   <View {...props} onComponentDidMount={setupEventHandling} />
 
-const mapStateToView = withCallback(setupEventHandling)(View)
+const lifecycleEvents = { onComponentDidMount: setupEventHandling }
+const ViewWithCallback = withLifecycle(lifecycleEvents)(View)
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)
-const vTree$ = map(mapStateToView, state$)
+const vTree$ = map(ViewWithCallback, state$)
 
 // NOTE: Effectful code must always disable fp/no-unused-expression
 // This is fine. Use the linter to stay disciplined.

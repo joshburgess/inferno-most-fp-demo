@@ -3,7 +3,7 @@ import {
   createStream,
   render,
   selectAction,
-  withCallback,
+  withLifecycle,
 } from './core'
 import { enableLogging } from './logging'
 
@@ -13,5 +13,5 @@ export {
   enableLogging,
   render,
   selectAction,
-  withCallback
+  withLifecycle,
 }
