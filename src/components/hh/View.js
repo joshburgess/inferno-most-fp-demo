@@ -10,7 +10,7 @@ const View = ({ count, rgb, subtitle, title }) => {
       ? {
         background: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`,
       }
-      : ''
+      : '',
   }
 
   return (

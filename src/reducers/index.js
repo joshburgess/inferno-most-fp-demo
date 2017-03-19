@@ -1,4 +1,4 @@
-import { dec, inc } from 'ramda'
+import { dec, inc } from '../framework/utils/fp'
 import Actions from '../actions'
 import { COUNT, RGB, SUBTITLE } from '../constants/stateKeys'
 import {

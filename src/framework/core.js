@@ -2,9 +2,9 @@ import { createRenderer, createVNode } from 'inferno'
 import { ComponentFunction } from 'inferno-vnode-flags'
 import { filter, observe, tap } from 'most'
 import { async } from 'most-subject'
-import { drainScan, ready } from './utils'
+import { drainScan, ready } from './utils/streams'
+import { compose, curry } from './utils/fp'
 import { init } from '../actions'
-import { compose, curry } from 'ramda'
 
 // Alias the async function name for users unfamiliar with most-subject
 // This will create a Subject stream to imperatively dispatch actions through
@@ -32,9 +32,9 @@ const withLifecycle = curry((refs, component, props) => createVNode(
   ComponentFunction, // flags
   component, // type
   props, // props
-  null, // children
-  null,  // events
-  null, // key
+  false, // children
+  false,  // events
+  false, // key
   refs, // refs
   false // isNormalized
 ))
