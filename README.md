@@ -13,15 +13,17 @@ Then, open index.html in your browser.
 
 ## Notes:
 
-### Three Separate Branches
+### Four Separate Branches
 
-This repository features two separate branches showing the same concept:
+This repository features four separate branches that we'll look at in the following order:
 
 1. `javascript`: This branch uses a plain JS object to store the global app state. This is the default branch you will be on when first cloning the repository. There is no master branch.
 
 2. `mori`: This branch uses a mori hashMap (an immutable & persistent data structure) to store the global app state. [mori](https://github.com/swannodette/mori) is similar to [immutable-js](https://github.com/facebook/immutable-js), but features a more functional API & better performance.
 
-3. `event-streams`: This branch is a continuation of the `javascript` branch demonstrating how the architecture could be rewritten to use event streams for handling events rather than directly assigning handlers to the components. This helps to further decouple events from component rendering and opens up new possibilities via composition & transformation of streams.
+3. `event-streams`: This branch is a continuation of the `mori` branch demonstrating how the architecture could be rewritten to use event streams for handling events rather than directly assigning handlers to the components. This helps to further decouple events from component rendering and opens up new possibilities via composition & transformation of streams.
+
+4. `fp-utils`: This branch is a continuation of the `event-streams` branch showing how we could write our own functional utilities from scratch and replace all of the ramda functions we were using in the previous branches. This is just meant as a learning exercise to help provide a better understanding of how these functions work.
 
 You are currently viewing the `mori` branch.
 
