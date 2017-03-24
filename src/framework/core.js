@@ -3,7 +3,7 @@ import { ComponentFunction } from 'inferno-vnode-flags'
 import { filter, observe, tap } from 'most'
 import { async } from 'most-subject'
 import { drainScan, ready } from './utils/streams'
-import { compose, curry } from './utils/fp'
+import { compose, curry } from 'ramda'
 import { init } from '../actions'
 
 // Alias the async function name for users unfamiliar with most-subject

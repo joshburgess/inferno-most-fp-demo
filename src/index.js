@@ -12,7 +12,8 @@ import {
   withLifecycle,
 } from './framework'
 import { map, scan } from 'most'
-import { get, partial, toClj } from 'mori'
+import { partial } from 'ramda'
+import { get, toClj } from 'mori'
 import { View } from './components'
 import reducer from './reducers'
 import {
@@ -59,7 +60,7 @@ const initialState = toClj({
 })
 
 const mapStateToView = state => {
-  const getState = partial(get, state)
+  const getState = partial(get, [state])
 
   const count = getState(COUNT)
   const rgb = getState(RGB)

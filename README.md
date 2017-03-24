@@ -25,7 +25,7 @@ This repository features two separate branches showing the same concept:
 
 4. `fp-utils`: This branch is a continuation of the `event-streams` branch showing how we could write our own functional utilities from scratch and replace all of the ramda functions we were using in the previous branches. This is just meant as a learning exercise to help provide a better understanding of how these functions work.
 
-You are currently viewing the `fp-utils` branch.
+You are currently viewing the `event-streams` branch.
 
 ### JSX & Hyperscript (hyperscript-helpers)
 
