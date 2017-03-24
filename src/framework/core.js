@@ -1,5 +1,5 @@
 import { createRenderer } from 'inferno'
-import { observe, tap } from 'most'
+import { filter, observe, tap } from 'most'
 import { async } from 'most-subject'
 import { drainScan, ready } from './utils'
 import { init } from '../actions'
