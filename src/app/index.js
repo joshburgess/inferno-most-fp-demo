@@ -10,7 +10,7 @@ import {
   createStream,
   render,
   withLifecycle,
-} from './framework'
+} from '../framework'
 import { map, scan } from 'most'
 import { partial } from 'ramda'
 import { get, toClj } from 'mori'
@@ -56,7 +56,6 @@ const initialState = toClj({
   [SUBTITLE]: 'Counter Demo',
   [TITLE]: 'Inferno + Most',
   [RGB]: { r: 136, g: 139, b: 177 },
-  debounceActive: false,
 })
 
 const mapStateToView = state => {

@@ -9,7 +9,7 @@
     "lint": "eslint src/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "mkdirp dist",
-    "build": "browserify src/index.js -t babelify --outfile dist/bundle.js",
+    "build": "browserify src/app/index.js -t babelify --outfile dist/bundle.js",
     "start": "yarn install && yarn run build && echo 'OPEN index.html IN YOUR BROWSER'"
   },
   "devDependencies": {
