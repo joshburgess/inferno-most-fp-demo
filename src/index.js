@@ -12,6 +12,7 @@ import {
   withLifecycle,
 } from './framework'
 import { map, scan } from 'most'
+import { get, partial, toClj } from 'mori'
 import { View } from './components'
 import reducer from './reducers'
 import {
@@ -32,22 +33,52 @@ export const dispatch = createDispatch(action$)
   Using a plain JS object to hold app state
 *******************************************************************************/
 
-const initialState = {
+// const initialState = {
+//   [COUNT]: 0,
+//   [SUBTITLE]: 'Counter Demo',
+//   [TITLE]: 'Inferno + Most',
+//   [RGB]: { r: 136, g: 139, b: 177 },
+// }
+
+// // const mapStateToView = (props) =>
+// //  <View {...props} onComponentDidMount={setupEventHandling} />
+
+// const lifecycleEvents = { onComponentDidMount: setupEventHandling }
+// const ViewWithCallback = withLifecycle(lifecycleEvents)(View)
+
+/******************************************************************************
+  Using a mori hashMap to hold app state
+*******************************************************************************/
+
+const initialState = toClj({
   [COUNT]: 0,
   [SUBTITLE]: 'Counter Demo',
   [TITLE]: 'Inferno + Most',
   [RGB]: { r: 136, g: 139, b: 177 },
+  debounceActive: false,
+})
+
+const mapStateToView = state => {
+  const getState = partial(get, state)
+
+  const count = getState(COUNT)
+  const rgb = getState(RGB)
+  const subtitle = getState(SUBTITLE)
+  const title = getState(TITLE)
+
+  const props = { count, rgb, subtitle, title }
+
+  // return <View {...props} onComponentDidMount={setupEventHandling} />
+
+  const lifecycleEvents = { onComponentDidMount: setupEventHandling }
+  const ViewWithCallback = withLifecycle(lifecycleEvents)(View)
+
+  return ViewWithCallback(props)
 }
-
-// const mapStateToView = (props) =>
-//   <View {...props} onComponentDidMount={setupEventHandling} />
-
-const lifecycleEvents = { onComponentDidMount: setupEventHandling }
-const ViewWithCallback = withLifecycle(lifecycleEvents)(View)
 
 // Data flow for the entire app
 const state$ = scan(reducer, initialState, action$)
-const vTree$ = map(ViewWithCallback, state$)
+const vTree$ = map(mapStateToView, state$)
 
 // NOTE: Effectful code must always disable fp/no-unused-expression
 // This is fine. Use the linter to stay disciplined.

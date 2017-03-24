@@ -2,10 +2,10 @@
 import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div } = hh(h)
-import { Counter, Header, Textbox } from '../../components'
+import { Counter, Header, PartyParrot, Textbox } from '../../components'
 
 const View = ({ count, rgb, subtitle, title }) => {
-  const attrs = {
+  const counterAttrs = {
     style: rgb
       ? {
         background: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`,
@@ -14,7 +14,7 @@ const View = ({ count, rgb, subtitle, title }) => {
   }
 
   return (
-    div('.counter-demo', attrs, [
+    div('.counter-demo', counterAttrs, [
       Header({ title, subtitle }),
       Counter({ count }),
       Textbox({
@@ -22,6 +22,7 @@ const View = ({ count, rgb, subtitle, title }) => {
         label: 'Edit subtitle',
         placeholder: subtitle || 'Enter new subtitle here',
       }),
+      PartyParrot(),
     ])
   )
 }

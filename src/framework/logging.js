@@ -1,3 +1,5 @@
+import { toJs } from 'mori'
+import { format } from 'date-fns'
 import {
   ACTION_LABEL,
   ACTION_COLOR,
@@ -6,7 +8,6 @@ import {
   PREV_STATE_LABEL,
   PREV_STATE_COLOR,
 } from '../constants/logTypes'
-import { format } from 'date-fns'
 
 // Logging
 const enableLogging = (prevState, action, nextState) => {
@@ -28,7 +29,7 @@ const enableLogging = (prevState, action, nextState) => {
   console.log(
     `%c${PREV_STATE_LABEL}`,
     `color: ${PREV_STATE_COLOR}; ${bold}`,
-    prevState
+    toJs(prevState)
   )
 
   console.log(
@@ -40,7 +41,7 @@ const enableLogging = (prevState, action, nextState) => {
   console.log(
     `%c${NEXT_STATE_LABEL}`,
     `color: ${NEXT_STATE_COLOR}; ${bold}`,
-    nextState
+    toJs(nextState)
   )
 
   console.groupEnd()

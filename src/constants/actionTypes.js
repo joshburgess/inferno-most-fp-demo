@@ -1,5 +1,5 @@
-export const INIT = '@@core/INIT'
-export const OBSERVE_EVENT_STREAMS = '@@core/OBSERVE_EVENT_STREAMS'
+export const INIT = '@@framework/INIT'
+export const OBSERVE_EVENT_STREAMS = '@@framework/OBSERVE_EVENT_STREAMS'
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
 export const RESET = 'RESET'

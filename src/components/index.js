@@ -1,5 +1,6 @@
 export { default as Button } from './hh/Button'
 export { default as Counter } from './hh/Counter'
 export { default as Header } from './hh/Header'
-export { default as View } from './hh/View'
+export { default as PartyParrot } from './hh/PartyParrot'
 export { default as Textbox } from './hh/Textbox'
+export { default as View } from './hh/View'

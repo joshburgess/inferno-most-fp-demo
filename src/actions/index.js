@@ -5,7 +5,6 @@ import {
   map,
   observe,
   startWith,
-  throttle,
 } from 'most'
 import {
   click,
@@ -107,15 +106,19 @@ export const setupEventHandling = () => {
     b: toColor(bRatio),
   })
 
-  // constant green ratio on each page refresh
+  // constant random ratio on each page refresh
   // const randomRatio = randomNumInRange(0, 1)
 
   const dimensionsToPointToRatio = ({ width, height }) =>
-    ({ x, y }) => ({
-      rRatio: x / width,
-      gRatio: randomNumInRange(0, 1), // random ratio for all new coords
-      bRatio: y / height,
-    })
+    ({ x, y }) => {
+      // different random ratio for every new set of coordinates
+      const randomRatio = randomNumInRange(0, 1)
+      return {
+        rRatio: x / width,
+        gRatio: randomRatio,
+        bRatio: y / height,
+      }
+    }
 
   const toCoords = ({ clientX, clientY }) => ({ x: clientX, y: clientY })
 
@@ -140,10 +143,6 @@ export const setupEventHandling = () => {
   const ratio$ = combine(pointToRatio, dimensionsWithInit$, coordsWithInit$)
   const rgb$ = map(ratioToRgb, ratio$)
 
-  const throttle150 = curry(throttle)(150)
-
-  const throttledRgb$ = throttle150(rgb$)
-
   // NOTE: Side effect causing code must disable fp/no-unused-expression
   // This is fine. Use the linter to stay disciplined.
 
@@ -153,7 +152,7 @@ export const setupEventHandling = () => {
   observe(reset, resetClick$)
   observe(increment, incrementClick$)
   observe(decrement, decrementClick$)
-  observe(updateRgb, throttledRgb$)
+  observe(updateRgb, rgb$)
 
   /* eslint-enable fp/no-unused-expression */
 
