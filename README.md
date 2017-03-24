@@ -15,7 +15,7 @@ Then, open index.html in your browser.
 
 ### Four Separate Branches
 
-This repository features two separate branches showing the same concept:
+This repository features four separate branches that we'll look at in the following order:
 
 1. `javascript`: This branch uses a plain JS object to store the global app state. This is the default branch you will be on when first cloning the repository. There is no master branch.
 
