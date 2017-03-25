@@ -1,11 +1,12 @@
 import { dec, inc } from 'ramda'
 import Actions from '../actions'
-import { COUNT, SUBTITLE } from '../constants/stateKeys'
+import { COUNT, SUBTITLE, TITLE } from '../constants/stateKeys'
 import {
   INCREMENT,
   DECREMENT,
   RESET,
   EDIT_SUBTITLE,
+  EDIT_TITLE,
 } from '../constants/actionTypes'
 import { enableLogging } from '../../framework'
 
@@ -18,6 +19,7 @@ const reducer = (state, action) => Actions.case({
   [DECREMENT]: () => ({ ...state, [COUNT]: dec(state[COUNT]) }),
   [RESET]: () => ({ ...state, [COUNT]: 0 }),
   [EDIT_SUBTITLE]: () => ({ ...state, [SUBTITLE]: action.payload }),
+  [EDIT_TITLE]: () => ({ ...state, [TITLE]: action.payload }),
   _: () => state,
 }, action)
 
