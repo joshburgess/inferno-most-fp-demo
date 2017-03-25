@@ -1,5 +1,5 @@
 // import Inferno from 'inferno'
-import { createDispatch, createStream, render } from './framework'
+import { createDispatch, createStream, render } from '../framework'
 import { map, scan } from 'most'
 import { get, toClj } from 'mori'
 import { partial } from 'ramda'
@@ -12,6 +12,19 @@ export const action$ = createStream()
 
 // Generate a dispatch function for emitting actions through actions$
 export const dispatch = createDispatch(action$)
+
+/******************************************************************************
+  Using a plain JS object to hold app state
+*******************************************************************************/
+
+// const initialState = {
+//   [COUNT]: 0,
+//   [SUBTITLE]: 'Counter Demo',
+//   [TITLE]: 'Inferno + Most',
+// }
+
+// // Use mapStateToView if using JSX or just use the View function directly
+// const mapStateToView = props => <View {...props} />
 
 /******************************************************************************
   Using a mori hashMap to hold app state
@@ -30,8 +43,11 @@ const mapStateToView = state => {
   const title = getState(TITLE)
   const count = getState(COUNT)
 
-  return View({ count, subtitle, title })
-  // return <View count={count} subtitle={subtitle} title={title} />
+  const props = { count, subtitle, title }
+
+  // return <View {...props} />
+
+  return View(props)
 }
 
 // Data flow for the entire app

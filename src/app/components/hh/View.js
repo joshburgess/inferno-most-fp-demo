@@ -2,11 +2,14 @@
 import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div } = hh(h)
-import { Counter, Header, Textbox } from '../../components'
-import { editSubtitle } from '../../actions'
+import {
+  Counter,
+  Header,
+  Textbox,
+} from '../../components'
+import { editSubtitle, editTitle } from '../../actions'
 // ramda does not have debounce or throttle functions
-// alternatively, we could have used most's debounce function on a stream of
-// actions filtered for the EDIT_SUBTITLE acion type
+// alternatively, we could have used most's debounce function on a stream
 import { debounce } from 'lodash/fp'
 
 // lodash/fp functions are auto-curried just like ramda
@@ -18,8 +21,14 @@ const View = ({ count, subtitle, title }) =>
     Header({ title, subtitle }),
     Counter({ count }),
     Textbox({
-      id: 'edit-subtitle',
-      label: 'Edit subtitle',
+      id: 'edit-title',
+      label: 'Edit title',
+      onInput: editTitle,
+      placeholder: title || 'Enter new title here',
+    }),
+    Textbox({
+      id: 'debounced-edit-subtitle',
+      label: 'Edit subtitle (Debounced)',
       onInput: debouncedEditSubtitle,
       placeholder: subtitle || 'Enter new subtitle here',
     }),

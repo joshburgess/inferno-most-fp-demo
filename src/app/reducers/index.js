@@ -1,14 +1,27 @@
 import { dec, inc, compose, partial } from 'ramda'
-import { get, hashMap, merge, toClj } from 'mori'
+import { get, hashMap, merge } from 'mori'
 import Actions from '../actions'
-import { COUNT, SUBTITLE } from '../constants/stateKeys'
+import { COUNT, SUBTITLE, TITLE } from '../constants/stateKeys'
 import {
   INCREMENT,
   DECREMENT,
   RESET,
   EDIT_SUBTITLE,
+  EDIT_TITLE,
 } from '../constants/actionTypes'
-import { enableLogging } from '../framework'
+import { enableLogging } from '../../framework'
+
+/******************************************************************************
+  Using a plain JS object to hold app state
+*******************************************************************************/
+
+// const reducer = (state, action) => Actions.case({
+//   [INCREMENT]: () => ({ ...state, [COUNT]: inc(state[COUNT]) }),
+//   [DECREMENT]: () => ({ ...state, [COUNT]: dec(state[COUNT]) }),
+//   [RESET]: () => ({ ...state, [COUNT]: 0 }),
+//   [EDIT_SUBTITLE]: () => ({ ...state, [SUBTITLE]: action.payload }),
+//   _: () => state,
+// }, action)
 
 /******************************************************************************
   Using a mori hashMap to hold app state
@@ -24,6 +37,7 @@ const reducer = (state, action) => {
   // partially apply key argument to make reusable set functions
   const setCount = partial(hashMap, [COUNT])
   const setSubtitle = partial(hashMap, [SUBTITLE])
+  const setTitle = partial(hashMap, [TITLE])
 
   // alternatively, we could have defined the same functionality like this
   // const mergeState = x => merge(state, x)
@@ -35,12 +49,14 @@ const reducer = (state, action) => {
   const mergeIncCount = compose(mergeSetCount, inc)
   const mergeDecCount = compose(mergeSetCount, dec)
   const mergeSetSubtitle = compose(mergeState, setSubtitle)
+  const mergeSetTitle = compose(mergeState, setTitle)
 
   return Actions.case({
     [INCREMENT]: () => mergeIncCount(prevCount),
     [DECREMENT]: () => mergeDecCount(prevCount),
     [RESET]: () => mergeSetCount(0),
     [EDIT_SUBTITLE]: () => mergeSetSubtitle(action.payload),
+    [EDIT_TITLE]: () => mergeSetTitle(action.payload),
     _: () => state,
   }, action)
 }

@@ -7,7 +7,7 @@ import {
   NEXT_STATE_COLOR,
   PREV_STATE_LABEL,
   PREV_STATE_COLOR,
-} from '../constants/logTypes'
+} from '../app/constants/logTypes'
 
 // Logging
 const enableLogging = (prevState, action, nextState) => {

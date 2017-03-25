@@ -1,9 +1,9 @@
 import { createRenderer } from 'inferno'
 import { filter, observe, tap } from 'most'
 import { async } from 'most-subject'
-import { drainScan, ready } from './utils'
+import { drainScan, ready } from './utils/streams'
 import { compose, curry } from 'ramda'
-import { init } from '../actions'
+import { init } from '../app/actions'
 
 // Alias the async function name for users unfamiliar with most-subject
 // This will create a Subject stream to imperatively dispatch actions through
