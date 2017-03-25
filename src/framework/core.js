@@ -2,7 +2,7 @@ import { createRenderer } from 'inferno'
 import { filter, observe, tap } from 'most'
 import { async } from 'most-subject'
 import { drainScan, ready } from './utils'
-import { init } from '../actions'
+import { init } from '../app/actions'
 import { compose, curry } from 'ramda'
 
 // Alias the async function name for users unfamiliar with most-subject
