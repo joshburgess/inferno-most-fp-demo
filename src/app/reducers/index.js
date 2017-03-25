@@ -1,5 +1,10 @@
-import { dec, inc, compose, partial } from 'ramda'
-import { get, hashMap, merge } from 'mori'
+import { compose, dec, inc, partial } from 'ramda'
+import {
+  get,
+  hashMap,
+  merge,
+  // toClj,
+} from 'mori'
 import Actions from '../actions'
 import { COUNT, SUBTITLE, TITLE } from '../constants/stateKeys'
 import {
@@ -20,6 +25,7 @@ import { enableLogging } from '../../framework'
 //   [DECREMENT]: () => ({ ...state, [COUNT]: dec(state[COUNT]) }),
 //   [RESET]: () => ({ ...state, [COUNT]: 0 }),
 //   [EDIT_SUBTITLE]: () => ({ ...state, [SUBTITLE]: action.payload }),
+//   [EDIT_TITLE]: () => ({ ...state, [TITLE]: action.payload }),
 //   _: () => state,
 // }, action)
 
@@ -39,10 +45,11 @@ const reducer = (state, action) => {
   const setSubtitle = partial(hashMap, [SUBTITLE])
   const setTitle = partial(hashMap, [TITLE])
 
-  // alternatively, we could have defined the same functionality like this
+  // alternatively, we could have defined the above functionality like this
   // const mergeState = x => merge(state, x)
   // const setCount = x => toClj({ [COUNT]: x })
   // const setSubtitle = x => toClj({ [SUBTITLE]: x })
+  // const setTitle = x => toClj({ [TITLE]: x })
 
   // create reusable merge variants via functional composition
   const mergeSetCount = compose(mergeState, setCount)
