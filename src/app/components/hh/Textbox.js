@@ -1,4 +1,4 @@
-// Use hypercscript + hyperscript-helpers
+// Use hyperscript + hyperscript-helpers
 import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div, input, label } = hh(h)
