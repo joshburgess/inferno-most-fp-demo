@@ -1,28 +1,23 @@
 {
-  "name": "inferno-most-counter-demo",
+  "name": "inferno-most-fp-demo",
   "version": "0.0.0",
-  "description": "A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most.js, reactive programmning, and various other functional programming tools & techniques",
-  "main": "src/index.js",
+  "description": "A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most.js, reactive programmning, and various functional programming tools & techniques",
   "author": "Josh Burgess",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "mkdirp dist",
-    "build": "browserify src/app/index.js -t babelify --outfile dist/bundle.js",
-    "start": "yarn install && yarn run build && echo 'OPEN index.html IN YOUR BROWSER'"
+    "clean": "rimraf dist",
+    "lint": "eslint src",
+    "test": "echo \"Error: No tests written yet\" && exit 1",
+    "build:webpack": "webpack --config webpack.config.prod.babel.js --progress --colors",
+    "build": "yarn run clean && yarn run build:webpack",
+    "start": "webpack-dev-server --config webpack.config.dev.babel.js"
   },
   "devDependencies": {
-    "babel-plugin-inferno": "^2.0.0",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-es2016": "^6.22.0",
-    "babel-preset-react": "^6.23.0",
-    "babel-preset-stage-2": "^6.22.0",
-    "babelify": "7.3.0",
-    "browserify": "^14.1.0",
-    "cross-env": "^3.1.4",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-inferno": "^3.1.0",
+    "babel-preset-latest": "^6.24.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "babel-register": "^6.24.0",
     "eslint": "^3.16.1",
     "eslint-config-standard-pure-fp": "^2.0.1",
     "eslint-config-standard-react": "^4.3.0",
@@ -34,10 +29,9 @@
     "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-standard": "^2.1.1",
-    "flow-bin": "^0.41.0",
-    "mkdirp": "^0.5.1",
     "rimraf": "^2.6.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "45": "^1.7.0",
@@ -46,12 +40,15 @@
     "creed": "^1.2.1",
     "date-fns": "^1.28.0",
     "fluture": "^5.0.0",
+    "folktale": "^2.0.0-alpha3",
     "hyperscript-helpers": "^3.0.2",
     "inferno": "^1.3.0-rc.8",
     "inferno-devtools": "^1.3.0-rc.8",
     "inferno-hyperscript": "^1.3.0-rc.8",
     "inferno-vnode-flags": "^1.3.0",
     "lodash": "^4.17.4",
+    "metamagical-interface": "^3.4.0",
+    "metamagical-repl": "^0.3.0",
     "mori": "^0.3.2",
     "most": "^1.2.2",
     "most-history": "^1.0.1",
@@ -60,7 +57,6 @@
     "ramda": "^0.23.0",
     "ramda-fantasy": "^0.7.0",
     "sanctuary": "^0.12.2",
-    "tachyons": "^4.6.2",
     "union-type": "0.3.3"
   }
 }
