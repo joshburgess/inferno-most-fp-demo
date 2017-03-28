@@ -7,7 +7,7 @@ import {
   NEXT_STATE_COLOR,
   PREV_STATE_LABEL,
   PREV_STATE_COLOR,
-} from '../app/constants/logTypes'
+} from '../../app/constants/logTypes'
 
 // Logging
 const enableLogging = (prevState, action, nextState) => {
@@ -16,7 +16,7 @@ const enableLogging = (prevState, action, nextState) => {
   const timestamp = format(Date.now(), timeFmt)
   const bold = 'font-weight: bold;'
 
-// NOTE: Side effect causing code must disable fp/no-unused-expression
+  // NOTE: Side effect causing code must disable fp/no-unused-expression
   // This is fine. Use the linter to stay disciplined.
 
   /* eslint-disable fp/no-unused-expression */

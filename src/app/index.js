@@ -1,3 +1,9 @@
+// Supply polyfills for older browsers
+import 'babel-polyfill'
+// Overwrite Promise implementation with Creed for better performance
+import { shim } from 'creed'
+shim() // eslint-disable-line fp/no-unused-expression
+
 // import Inferno from 'inferno'
 import { createDispatch, createStream, render } from '../framework'
 import { map, scan } from 'most'

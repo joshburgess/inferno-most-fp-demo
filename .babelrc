@@ -1,13 +1,11 @@
 {
   "presets": [
-    "es2015",
-    "es2016",
-    "stage-2"
+    "latest",
+    "stage-3"
   ],
 
-  "plugins": [
-    "transform-object-rest-spread",
-    "syntax-jsx",
-    "inferno"
-  ]
+  "plugins": [["inferno", {
+    "imports": true,
+    "pragma": ""
+  }]]
 }
