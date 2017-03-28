@@ -37,7 +37,7 @@ export const dispatch = createDispatch(action$)
 // const initialState = {
 //   [COUNT]: 0,
 //   [SUBTITLE]: 'Counter Demo',
-//   [TITLE]: 'Inferno + Most',
+//   [TITLE]: 'Inferno + Most + FP',
 //   [RGB]: { r: 136, g: 139, b: 177 },
 // }
 
