@@ -15,7 +15,7 @@ import {
   EDIT_TITLE,
   UPDATE_RGB,
 } from '../constants/actionTypes'
-import { enableLogging } from '../framework'
+import { enableLogging } from '../../framework'
 
 /******************************************************************************
   Using a plain JS object to hold app state
