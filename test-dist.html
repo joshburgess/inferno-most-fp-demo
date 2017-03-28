@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <title>Inferno + Most + FP Counter Demo</title>
+    <style>
+
+      html, body, #root, .counter-demo {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        color: rgb(255, 255, 255);
+        padding: 0;
+        margin: 0;
+      }
+
+      .counter-demo {
+        background: rgb(136, 139, 177);
+        padding: 30px 0;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      .counter-btn {
+        width: 100%;
+        font-size: 24px;
+        line-height: 1;
+        padding: 10px 0;
+        color: rgb(255, 255, 255);
+        border: 2px solid transparent;
+        background: rgb(136, 177, 162);
+        border-radius: 5px;
+        opacity: 1;
+        cursor: pointer;
+        margin: 15px 0;
+      }
+
+      .counter-btn:hover {
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .counter-btn:active {
+        border: 2px solid rgba(255, 255, 255, 1);
+      }
+
+      .centered {
+        margin: 0 auto;
+        width: 50%;
+      }
+
+      label {
+        padding: 5px 10px;
+        margin: 20px 0 0 0;
+        font-size: 24px;
+        display:block;
+      }
+
+      input {
+        padding: 5px;
+        margin: 10px 0 0 0;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='root'></div>
+    <script type='text/javascript' src='dist/bundle.js'></script>
+  </body>
+</html>

@@ -1,3 +1,9 @@
+// Supply polyfills for older browsers
+import 'babel-polyfill'
+// Overwrite Promise implementation with Creed for better performance
+import { shim } from 'creed'
+shim() // eslint-disable-line fp/no-unused-expression
+
 import Inferno from 'inferno'
 import { createDispatch, createStream, render } from '../framework'
 import { map, scan } from 'most'
@@ -18,7 +24,7 @@ export const dispatch = createDispatch(action$)
 const initialState = {
   [COUNT]: 0,
   [SUBTITLE]: 'Counter Demo',
-  [TITLE]: 'Inferno + Most',
+  [TITLE]: 'Inferno + Most + FP',
 }
 
 // Use mapStateToView if using JSX or just use the View function directly

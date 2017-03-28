@@ -1,15 +1,15 @@
-# inferno-most-counter-demo
+# inferno-most-fp-demo
 A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most, reactive programming, and various FP tools & techniques
 
 
 ## Instructions:
 
 ```
-git clone https://github.com/joshburgess/inferno-most-counter-demo
-cd inferno-most-counter-demo
+git clone https://github.com/joshburgess/inferno-most-fp-demo
+cd inferno-most-fp-demo
 yarn start
 ```
-Then, open index.html in your browser.
+
 
 ## Notes:
 

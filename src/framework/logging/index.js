@@ -5,7 +5,7 @@ import {
   NEXT_STATE_COLOR,
   PREV_STATE_LABEL,
   PREV_STATE_COLOR,
-} from '../app/constants/logTypes'
+} from '../../app/constants/logTypes'
 import { format } from 'date-fns'
 
 // Logging
