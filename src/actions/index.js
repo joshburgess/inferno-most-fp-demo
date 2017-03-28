@@ -21,6 +21,7 @@ import {
   DECREMENT,
   RESET,
   EDIT_SUBTITLE,
+  EDIT_TITLE,
   UPDATE_RGB,
 } from '../constants/actionTypes'
 
@@ -47,6 +48,7 @@ const Actions = Type({
   [DECREMENT]: DefaultAction,
   [RESET]: DefaultAction,
   [EDIT_SUBTITLE]: ActionWithStringPayload,
+  [EDIT_TITLE]: ActionWithStringPayload,
   [UPDATE_RGB]: ActionWithObjectPayload,
 })
 
@@ -60,15 +62,19 @@ const decrement = () => dispatch(Actions[DECREMENT]())
 const reset = () => dispatch(Actions[RESET]())
 const editSubtitle = ({ target }) =>
   dispatch(Actions[EDIT_SUBTITLE](target.value))
+export const editTitle = ({ target }) =>
+  dispatch(Actions[EDIT_TITLE](target.value))
 const updateRgb = rgb => dispatch(Actions[UPDATE_RGB](rgb))
 
 // Setup event handling
 export const setupEventHandling = () => {
-  const editSubtitleTextbox = document.getElementById('edit-subtitle')
+  const editTitleTextbox = document.getElementById('edit-title')
+  const editSubtitleTextbox = document.getElementById('debounced-edit-subtitle')
   const resetButton = document.getElementById('reset-btn')
   const incrementButton = document.getElementById('increment-btn')
   const decrementButton = document.getElementById('decrement-btn')
 
+  const editTitleInput$ = input(editTitleTextbox)
   const editSubtitleInput$ = input(editSubtitleTextbox)
   const resetClick$ = click(resetButton)
   const incrementClick$ = click(incrementButton)
@@ -148,6 +154,7 @@ export const setupEventHandling = () => {
 
   /* eslint-disable fp/no-unused-expression */
 
+  observe(editTitle, editTitleInput$)
   observe(editSubtitle, debouncedEditSubtitleInput$)
   observe(reset, resetClick$)
   observe(increment, incrementClick$)

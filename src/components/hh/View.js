@@ -1,4 +1,4 @@
-// Use hypercscript + hyperscript-helpers
+// Use hyperscript + hyperscript-helpers
 import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div } = hh(h)
@@ -18,8 +18,13 @@ const View = ({ count, rgb, subtitle, title }) => {
       Header({ title, subtitle }),
       Counter({ count }),
       Textbox({
-        id: 'edit-subtitle',
-        label: 'Edit subtitle',
+        id: 'edit-title',
+        label: 'Edit title',
+        placeholder: title || 'Enter new title here',
+      }),
+      Textbox({
+        id: 'debounced-edit-subtitle',
+        label: 'Edit subtitle (Debounced)',
         placeholder: subtitle || 'Enter new subtitle here',
       }),
       PartyParrot(),

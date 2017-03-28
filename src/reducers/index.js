@@ -6,12 +6,13 @@ import {
   // toClj,
 } from 'mori'
 import Actions from '../actions'
-import { COUNT, RGB, SUBTITLE } from '../constants/stateKeys'
+import { COUNT, RGB, SUBTITLE, TITLE } from '../constants/stateKeys'
 import {
   INCREMENT,
   DECREMENT,
   RESET,
   EDIT_SUBTITLE,
+  EDIT_TITLE,
   UPDATE_RGB,
 } from '../constants/actionTypes'
 import { enableLogging } from '../framework'
@@ -25,6 +26,7 @@ import { enableLogging } from '../framework'
 //   [DECREMENT]: () => ({ ...state, [COUNT]: dec(state[COUNT]) }),
 //   [RESET]: () => ({ ...state, [COUNT]: 0 }),
 //   [EDIT_SUBTITLE]: () => ({ ...state, [SUBTITLE]: action.payload }),
+//   [EDIT_TITLE]: () => ({ ...state, [TITLE]: action.payload }),
 //   [UPDATE_RGB]: () => ({ ...state, [RGB]: action.payload }),
 //   _: () => state,
 // }, action)
@@ -43,18 +45,22 @@ const reducer = (state, action) => {
   // partially apply key argument to make reusable set functions
   const setCount = partial(hashMap, [COUNT])
   const setSubtitle = partial(hashMap, [SUBTITLE])
+  const setTitle = partial(hashMap, [TITLE])
   const setRgb = partial(hashMap, [RGB])
 
   // alternatively, we could have defined the same functionality like this
   // const mergeState = x => merge(state, x)
   // const setCount = x => toClj({ [COUNT]: x })
   // const setSubtitle = x => toClj({ [SUBTITLE]: x })
+  // const setTitle = x => toClj({ [TITLE]: x })
+  // const setRgb = x => toClj({ [RGB]: x })
 
   // create reusable merge variants via functional composition
   const mergeSetCount = compose(mergeState, setCount)
   const mergeIncCount = compose(mergeSetCount, inc)
   const mergeDecCount = compose(mergeSetCount, dec)
   const mergeSetSubtitle = compose(mergeState, setSubtitle)
+  const mergeSetTitle = compose(mergeState, setTitle)
   const mergeSetRgb = compose(mergeState, setRgb)
 
   return Actions.case({
@@ -62,6 +68,7 @@ const reducer = (state, action) => {
     [DECREMENT]: () => mergeDecCount(prevCount),
     [RESET]: () => mergeSetCount(0),
     [EDIT_SUBTITLE]: () => mergeSetSubtitle(action.payload),
+    [EDIT_TITLE]: () => mergeSetTitle(action.payload),
     [UPDATE_RGB]: () => mergeSetRgb(action.payload),
     _: () => state,
   }, action)

@@ -14,8 +14,13 @@ const View = ({ count, rgb, subtitle, title }) => {
       <Header title={title} subtitle={subtitle} />
       <Counter count={count} />
       <Textbox
-        id={'edit-subtitle'}
+        id={'edit-title'}
         label={'Edit subtitle'}
+        placeholder={title || 'Enter new title here'}
+      />
+      <Textbox
+        id={'debounced-edit-subtitle'}
+        label={'Edit subtitle (Debounced)'}
         placeholder={subtitle || 'Enter new subtitle here'}
       />
       <PartyParrot />
