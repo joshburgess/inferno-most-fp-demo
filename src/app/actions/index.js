@@ -10,22 +10,23 @@ import {
 } from '../constants/actionTypes'
 
 // Record types
-const DefaultActionRecordType = {
+const DefaultAction = {
   // type: String,
 }
-const PayloadActionRecordType = {
+
+const ActionWithStringPayload = {
   // type: String,
   payload: String,
 }
 
 // Actions
 const Actions = Type({
-  [INIT]: DefaultActionRecordType,
-  [INCREMENT]: DefaultActionRecordType,
-  [DECREMENT]: DefaultActionRecordType,
-  [RESET]: DefaultActionRecordType,
-  [EDIT_SUBTITLE]: PayloadActionRecordType,
-  [EDIT_TITLE]: PayloadActionRecordType,
+  [INIT]: DefaultAction,
+  [INCREMENT]: DefaultAction,
+  [DECREMENT]: DefaultAction,
+  [RESET]: DefaultAction,
+  [EDIT_SUBTITLE]: ActionWithStringPayload,
+  [EDIT_TITLE]: ActionWithStringPayload,
 })
 
 // Action creators
