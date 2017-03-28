@@ -26,7 +26,7 @@ export const dispatch = createDispatch(action$)
 // const initialState = {
 //   [COUNT]: 0,
 //   [SUBTITLE]: 'Counter Demo',
-//   [TITLE]: 'Inferno + Most',
+//   [TITLE]: 'Inferno + Most + FP',
 // }
 
 // // Use mapStateToView if using JSX or just use the View function directly
@@ -39,7 +39,7 @@ export const dispatch = createDispatch(action$)
 const initialState = toClj({
   [COUNT]: 0,
   [SUBTITLE]: 'Counter Demo',
-  [TITLE]: 'Inferno + Most',
+  [TITLE]: 'Inferno + Most + FP',
 })
 
 const mapStateToView = state => {
