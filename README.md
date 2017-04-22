@@ -7,6 +7,7 @@ A demo showing how to build a React+Redux-like architecture from scratch using I
 ```
 git clone https://github.com/joshburgess/inferno-most-fp-demo
 cd inferno-most-fp-demo
+yarn install
 yarn start
 ```
 
