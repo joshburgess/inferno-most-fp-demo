@@ -10,6 +10,7 @@ import { map, scan } from 'most'
 import { View } from './components'
 import reducer from './reducers'
 import { COUNT, SUBTITLE, TITLE } from './constants/stateKeys'
+import { applyGlobalStyles } from './styles'
 
 // Create stream of actions
 const action$ = createStream()
@@ -41,5 +42,8 @@ const vTree$ = map(mapStateToView, state$)
 
 // Mount app, track virtual DOM tree updates, & automatically render changes
 render(vTree$, document.getElementById('root'))
+
+// apply global cssRules (using TypeStyle)
+applyGlobalStyles()
 
 /* eslint-enable fp/no-unused-expression */
