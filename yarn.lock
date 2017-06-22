@@ -1132,12 +1132,12 @@ concat-stream@^1.4.6:
     readable-stream "~2.0.0"
     typedarray "~0.0.5"
 
-concurrify@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/concurrify/-/concurrify-0.1.1.tgz#ae8ae2cd5bded30aee315b3bd5322ae4de38ee85"
+concurrify@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/concurrify/-/concurrify-1.0.1.tgz#1febe4b4615d4a86ee293a39713ffad5feb9681e"
   dependencies:
-    sanctuary-type-classes "^3.0.0"
-    sanctuary-type-identifiers "^1.0.0"
+    sanctuary-type-classes "^6.0.0"
+    sanctuary-type-identifiers "^2.0.0"
 
 connect-history-api-fallback@^1.3.0:
   version "1.3.0"
@@ -1333,6 +1333,10 @@ delayed-stream@~1.0.0:
 delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
+
+denque@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/denque/-/denque-1.1.1.tgz#10229c2b88eec1bd15ff82c5fde356e7beb6db9e"
 
 depd@1.1.0, depd@~1.1.0:
   version "1.1.0"
@@ -1876,18 +1880,23 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-fluture@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/fluture/-/fluture-5.0.0.tgz#5abd07756a12edc54907b7a6d40e61e717cd9b0f"
+fluture@^6.2.6:
+  version "6.2.6"
+  resolved "https://registry.yarnpkg.com/fluture/-/fluture-6.2.6.tgz#9b289cc35daae9d9148cae4f1e846a2b747c1ef2"
   dependencies:
-    concurrify "^0.1.0"
+    concurrify "^1.0.0"
+    denque "^1.1.1"
     inspect-f "^1.2.0"
-    sanctuary-type-classes "^3.0.0"
-    sanctuary-type-identifiers "^1.0.0"
+    sanctuary-type-classes "^6.0.0"
+    sanctuary-type-identifiers "^2.0.0"
 
-folktale@^2.0.0-alpha1, folktale@^2.0.0-alpha3:
+folktale@^2.0.0-alpha1:
   version "2.0.0-alpha3"
   resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.0-alpha3.tgz#45f51feb486f00aa3d1d6f0f51eb45406c344899"
+
+folktale@^2.0.0-beta1:
+  version "2.0.0-beta1"
+  resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.0-beta1.tgz#93c494786ee5134afdbdab1116d47ed7410c755d"
 
 for-in@^1.0.1:
   version "1.0.2"
@@ -2199,9 +2208,9 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
-hyperscript-helpers@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/hyperscript-helpers/-/hyperscript-helpers-3.0.2.tgz#2511ba43a084d6673ff574fe1ed3d6d405613d25"
+hyperscript-helpers@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/hyperscript-helpers/-/hyperscript-helpers-3.0.3.tgz#583ac45214c9ea810991feb97bdb37fc3d12a1e8"
 
 ieee754@^1.1.4:
   version "1.1.8"
@@ -2219,49 +2228,49 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-inferno-component@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-1.3.1.tgz#31f0acc5c682b2827418bcc4df1d72848f5d936d"
+inferno-component@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.6.0.tgz#b3a0f1358661eb4f91a7dda286c04a4bb95cd227"
   dependencies:
-    inferno "^1.3.1"
-    inferno-shared "^1.3.0"
-    inferno-vnode-flags "^1.3.0"
+    inferno "3.6.0"
+    inferno-shared "3.6.0"
+    inferno-vnode-flags "3.6.0"
 
-inferno-devtools@^1.3.0-rc.8:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-1.3.1.tgz#8928d634479b5bd2caf1b8054a32005871aed7ef"
+inferno-devtools@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-3.6.0.tgz#96b377ede6dd27a029dbdf263324d08f478bfac5"
   dependencies:
-    inferno "^1.3.1"
-    inferno-component "^1.3.1"
-    inferno-shared "^1.3.0"
-    inferno-vnode-flags "^1.3.0"
+    inferno "3.6.0"
+    inferno-component "3.6.0"
+    inferno-shared "3.6.0"
+    inferno-vnode-flags "3.6.0"
 
-inferno-hyperscript@^1.3.0-rc.8:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/inferno-hyperscript/-/inferno-hyperscript-1.3.1.tgz#494050794e51478a6ca8bb3302e861cf49423090"
+inferno-hyperscript@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/inferno-hyperscript/-/inferno-hyperscript-3.6.0.tgz#f84d49fd75be4684eda27dd6bf1ec1d1253620c2"
   dependencies:
-    inferno "^1.3.1"
-    inferno-shared "^1.3.0"
-    inferno-vnode-flags "^1.3.0"
+    inferno "3.6.0"
+    inferno-shared "3.6.0"
+    inferno-vnode-flags "3.6.0"
 
-inferno-shared@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-1.3.0.tgz#3994b373fd16a0fc02aef6b12503f790b1eddddc"
+inferno-shared@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.6.0.tgz#02c20a458e28ad6abb4b90054aaab0b903b81d5e"
 
 inferno-vnode-flags@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-1.5.1.tgz#3b1b54ee5e9f167863b89e6bee1b19fd3941329f"
 
-inferno-vnode-flags@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-1.3.0.tgz#d2fca602325e276146f99ddcdfe97b3a2506426f"
+inferno-vnode-flags@3.6.0, inferno-vnode-flags@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.6.0.tgz#597e0f0fe397750a62ee402e9bd3ee11caf00514"
 
-inferno@^1.3.0-rc.8, inferno@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-1.3.1.tgz#5e8229a821aa417bfb97aeb70f67d1615141af36"
+inferno@3.6.0, inferno@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.6.0.tgz#dc932be04c0f53f9540fef690b41b99dd1132e2f"
   dependencies:
-    inferno-shared "^1.3.0"
-    inferno-vnode-flags "^1.3.0"
+    inferno-shared "3.6.0"
+    inferno-vnode-flags "3.6.0"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -2804,9 +2813,17 @@ most@^0.19.7:
     "@most/prelude" "^1.2.0"
     symbol-observable "^0.2.4"
 
-most@^1.1.0, most@^1.2.2:
+most@^1.1.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/most/-/most-1.2.2.tgz#8f12e434ad6195ed2e1efb3ec217e0cbcf3e1de8"
+  dependencies:
+    "@most/multicast" "^1.2.5"
+    "@most/prelude" "^1.4.0"
+    symbol-observable "^1.0.2"
+
+most@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/most/-/most-1.4.1.tgz#b513b5fb683bd59d6b1dcf8741503e62f072b291"
   dependencies:
     "@most/multicast" "^1.2.5"
     "@most/prelude" "^1.4.0"
@@ -3205,15 +3222,15 @@ querystringify@0.0.x:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-0.0.4.tgz#0cf7f84f9463ff0ae51c4c4b142d95be37724d9c"
 
-ramda-fantasy@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/ramda-fantasy/-/ramda-fantasy-0.7.0.tgz#ac77a7a5d55dfc1ddc224ac418e9be8900c65d17"
+ramda-fantasy@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/ramda-fantasy/-/ramda-fantasy-0.8.0.tgz#9e8c37d93ec0a70796cfc10873dd9c50850390f6"
   dependencies:
     ramda ">=0.15.0"
 
-ramda@>=0.15.0, ramda@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
+ramda@>=0.15.0, ramda@^0.24.1:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
 
 ramda@^0.19.1:
   version "0.19.1"
@@ -3484,36 +3501,34 @@ safe-buffer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
-sanctuary-def@0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/sanctuary-def/-/sanctuary-def-0.9.0.tgz#a54bc330ec955d0ef47752317a01657db6d4760e"
+sanctuary-def@0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/sanctuary-def/-/sanctuary-def-0.12.1.tgz#bb9b2ad9407b1519d1ee61fd293b24e86a2044b3"
   dependencies:
-    sanctuary-type-classes "2.0.x"
-    sanctuary-type-identifiers "1.0.x"
+    sanctuary-type-classes "6.0.x"
+    sanctuary-type-identifiers "2.0.x"
 
-sanctuary-type-classes@2.0.x:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-2.0.1.tgz#06b6cfd78e3e8d85cd93f5c2d7b08796b68d1e74"
-  dependencies:
-    sanctuary-type-identifiers "1.0.x"
-
-sanctuary-type-classes@3.0.1, sanctuary-type-classes@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-3.0.1.tgz#65163f8e1dfdfdc05cf842b83b608fff921cda15"
+sanctuary-type-classes@6.0.0, sanctuary-type-classes@6.0.x, sanctuary-type-classes@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-6.0.0.tgz#1db3f8c1247de018471e978fe4956a03eb62f464"
   dependencies:
     sanctuary-type-identifiers "1.0.x"
 
-sanctuary-type-identifiers@1.0.0, sanctuary-type-identifiers@1.0.x, sanctuary-type-identifiers@^1.0.0:
+sanctuary-type-identifiers@1.0.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/sanctuary-type-identifiers/-/sanctuary-type-identifiers-1.0.0.tgz#e8f359f006cb5e624cfb8464603fc114608bde9f"
 
-sanctuary@^0.12.2:
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/sanctuary/-/sanctuary-0.12.2.tgz#70ae648aff04787b403402093caa963b873a4ea5"
+sanctuary-type-identifiers@2.0.1, sanctuary-type-identifiers@2.0.x, sanctuary-type-identifiers@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/sanctuary-type-identifiers/-/sanctuary-type-identifiers-2.0.1.tgz#fc524cf6dd92cebfcbb0dd9509eff193159a20ed"
+
+sanctuary@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/sanctuary/-/sanctuary-0.13.2.tgz#ed1c9c2f2b1745d659ee3457954c8b1154f8d4a8"
   dependencies:
-    sanctuary-def "0.9.0"
-    sanctuary-type-classes "3.0.1"
-    sanctuary-type-identifiers "1.0.0"
+    sanctuary-def "0.12.1"
+    sanctuary-type-classes "6.0.0"
+    sanctuary-type-identifiers "2.0.1"
 
 select-hose@^2.0.0:
   version "2.0.0"

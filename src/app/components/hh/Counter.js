@@ -8,7 +8,7 @@ import { CENTERED, RESET_BTN } from '../../styles'
 
 const Counter = ({ title, subtitle, count }) =>
   div(`.${CENTERED}`, [
-    Button({ text: 'Reset', clickHandler: reset, className: `.${RESET_BTN}` }),
+    Button({ text: 'Reset', clickHandler: reset, className: RESET_BTN }),
     Button({ text: '-', clickHandler: decrement }),
     h1('', [count]),
     Button({ text: '+', clickHandler: increment }),
