@@ -7,6 +7,7 @@ A demo showing how to build a React+Redux-like architecture from scratch using I
 ```
 git clone https://github.com/joshburgess/inferno-most-fp-demo
 cd inferno-most-fp-demo
+yarn install
 yarn start
 ```
 
@@ -38,6 +39,8 @@ This project makes heavy use of ESLint to enforce a strict, functional style. Th
 ### Functional Tools & Techniques
 
 [ramda](https://github.com/ramda/ramda) is used to offer functions like `compose`, `curry`, & `partial`. Techniques like functional composition, currying, & partial application are extremely helpful for creating reusable functions & clean, highly readable code. [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide) can be used as an alternative. Although I am using ramda, using either of these libraries will give you a huge assortment of very useful functional tools to work with. These are the types of utilities you would find in the standard libraries of purely functional programming languages.
+
+NOTE: Throughout the code, while using `compose`, `curry`, & `partial`, I am making extra, unnecessary assignments with descriptive naming to try to help explain how these functions work for people who are unfamiliar with the concepts. Normally, you probably wouldn't use so many intermediate variables, and you might even choose to write in a [Pointfree style](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch5.html#pointfree#pointfree).
 
 ### How To Take This Idea Further
 
