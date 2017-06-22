@@ -20,6 +20,9 @@ export const applyGlobalStyles = () => {
   /* eslint-enable fp/no-unused-expression */
 }
 
+/* eslint-enable fp/no-nil */
+/* eslint-enable better/explicit-return */
+
 export const LABEL = style({
   padding: '5px 10px',
   margin: '20px 0 0 0',
@@ -32,9 +35,6 @@ export const INPUT = style({
   margin: '10px 0 0 0',
   borderRadius: '5px',
 })
-
-/* eslint-enable fp/no-nil */
-/* eslint-enable better/explicit-return */
 
 export const COUNTER_DEMO = style({
   height: '100%',
@@ -67,6 +67,11 @@ export const COUNTER_BTN = style({
       border: '2px solid rgba(255, 255, 255, 0.6)',
     },
   },
+})
+
+export const RESET_BTN = style({
+  background: 'rgb(177, 136, 136)',
+  margin: '40px 0',
 })
 
 export const CENTERED = style({
