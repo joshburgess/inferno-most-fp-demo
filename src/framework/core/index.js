@@ -25,7 +25,7 @@ const render = (vTree$, mountNode) =>
 
 // Utility function for filtering the action$ for a specific action
 const selectAction = curry((actionType, stream) =>
-  filter(({ _name }) => _name && _name === actionType, stream))
+  filter(({ type }) => type && type === actionType, stream))
 
 // Higher order component utility which applies lifecycle functions on refs
 const withLifecycle = curry((refs, component, props) => createVNode(
@@ -33,7 +33,7 @@ const withLifecycle = curry((refs, component, props) => createVNode(
   component, // type
   props, // props
   false, // children
-  false,  // events
+  false, // events
   false, // key
   refs, // refs
   false // isNormalized

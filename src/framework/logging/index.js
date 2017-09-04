@@ -11,7 +11,7 @@ import {
 
 // Logging
 const enableLogging = (prevState, action, nextState) => {
-  const { _name: type, payload } = action
+  const { type, payload } = action
   const timeFmt = 'HH:mm:ss.SSS'
   const timestamp = format(Date.now(), timeFmt)
   const bold = 'font-weight: bold;'

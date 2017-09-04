@@ -27,16 +27,16 @@ import {
 
 // Record types
 const DefaultAction = {
-  // type: String,
+  type: String,
 }
 
-const ActionWithStringPayload = {
-  // type: String,
+const StringPayloadAction = {
+  type: String,
   payload: String,
 }
 
-const ActionWithObjectPayload = {
-  // type: String,
+const ObjectPayloadAction = {
+  type: String,
   payload: Object,
 }
 
@@ -47,24 +47,28 @@ const Actions = Type({
   [INCREMENT]: DefaultAction,
   [DECREMENT]: DefaultAction,
   [RESET]: DefaultAction,
-  [EDIT_SUBTITLE]: ActionWithStringPayload,
-  [EDIT_TITLE]: ActionWithStringPayload,
-  [UPDATE_RGB]: ActionWithObjectPayload,
+  [EDIT_SUBTITLE]: StringPayloadAction,
+  [EDIT_TITLE]: StringPayloadAction,
+  [UPDATE_RGB]: ObjectPayloadAction,
 })
 
 export default Actions
 
+// helper functions to decrease boilerplate when constructing actions
+const createDefaultAction = action => Actions[action](action)
+const createPayloadAction = action => payload => Actions[action](action)(payload)
+
 // Action creators
-export const init = () => dispatch(Actions[INIT]())
-const observeEventStreams = () => dispatch(Actions[OBSERVE_EVENT_STREAMS]())
-const increment = () => dispatch(Actions[INCREMENT]())
-const decrement = () => dispatch(Actions[DECREMENT]())
-const reset = () => dispatch(Actions[RESET]())
-const editSubtitle = ({ target }) =>
-  dispatch(Actions[EDIT_SUBTITLE](target.value))
-export const editTitle = ({ target }) =>
-  dispatch(Actions[EDIT_TITLE](target.value))
-const updateRgb = rgb => dispatch(Actions[UPDATE_RGB](rgb))
+export const init = () => dispatch(createDefaultAction(INIT))
+const observeEventStreams = () => dispatch(createDefaultAction(OBSERVE_EVENT_STREAMS))
+const increment = () => dispatch(createDefaultAction(INCREMENT))
+const decrement = () => dispatch(createDefaultAction(DECREMENT))
+const reset = () => dispatch(createDefaultAction(RESET))
+const editSubtitle =
+  ({ target }) => dispatch(createPayloadAction(EDIT_SUBTITLE)(target.value))
+export const editTitle =
+  ({ target }) => dispatch(createPayloadAction(EDIT_TITLE)(target.value))
+const updateRgb = rgb => dispatch(createPayloadAction(UPDATE_RGB)(rgb))
 
 // Setup event handling
 export const setupEventHandling = () => {
