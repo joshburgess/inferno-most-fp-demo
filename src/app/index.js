@@ -15,7 +15,7 @@ import { applyGlobalStyles } from './styles'
 // Create stream of actions
 const action$ = createStream()
 
-// Generate a dispatch function for emitting actions through actions$
+// Generate a dispatch function for emitting actions through action$
 export const dispatch = createDispatch(action$)
 
 /******************************************************************************
