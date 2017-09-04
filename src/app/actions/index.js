@@ -11,11 +11,11 @@ import {
 
 // Record types
 const DefaultAction = {
-  // type: String,
+  type: String,
 }
 
-const ActionWithStringPayload = {
-  // type: String,
+const StringPayloadAction = {
+  type: String,
   payload: String,
 }
 
@@ -25,18 +25,22 @@ const Actions = Type({
   [INCREMENT]: DefaultAction,
   [DECREMENT]: DefaultAction,
   [RESET]: DefaultAction,
-  [EDIT_SUBTITLE]: ActionWithStringPayload,
-  [EDIT_TITLE]: ActionWithStringPayload,
+  [EDIT_SUBTITLE]: StringPayloadAction,
+  [EDIT_TITLE]: StringPayloadAction,
 })
 
+// helper functions to decrease boilerplate when constructing actions
+const createDefaultAction = action => Actions[action](action)
+const createStringPayloadAction = action => payload => Actions[action](action)(payload)
+
 // Action creators
-export const init = () => dispatch(Actions[INIT]())
-export const increment = () => dispatch(Actions[INCREMENT]())
-export const decrement = () => dispatch(Actions[DECREMENT]())
-export const reset = () => dispatch(Actions[RESET]())
-export const editSubtitle = ({ target }) =>
-    dispatch(Actions[EDIT_SUBTITLE](target.value))
-export const editTitle = ({ target }) =>
-  dispatch(Actions[EDIT_TITLE](target.value))
+export const init = () => dispatch(createDefaultAction(INIT))
+export const increment = () => dispatch(createDefaultAction(INCREMENT))
+export const decrement = () => dispatch(createDefaultAction(DECREMENT))
+export const reset = () => dispatch(createDefaultAction(RESET))
+export const editSubtitle =
+  ({ target }) => dispatch(createStringPayloadAction(EDIT_SUBTITLE)(target.value))
+export const editTitle =
+  ({ target }) => dispatch(createStringPayloadAction(EDIT_TITLE)(target.value))
 
 export default Actions

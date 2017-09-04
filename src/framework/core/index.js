@@ -25,7 +25,7 @@ const render = (vTree$, mountNode) =>
   observe(() => scanRenderer(vTree$)(mountNode), logInitOnReady())
 
 const selectAction = curry((actionType, stream) =>
-  filter(({ _name }) => _name && _name === actionType, stream))
+  filter(({ type }) => type && type === actionType, stream))
 
 export {
   createDispatch,
