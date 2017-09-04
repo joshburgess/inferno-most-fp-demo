@@ -30,13 +30,13 @@ const Actions = Type({
 })
 
 // Action creators
-export const init = () => dispatch(Actions[INIT]())
-export const increment = () => dispatch(Actions[INCREMENT]())
-export const decrement = () => dispatch(Actions[DECREMENT]())
-export const reset = () => dispatch(Actions[RESET]())
-export const editSubtitle = ({ target }) =>
-    dispatch(Actions[EDIT_SUBTITLE](target.value))
-export const editTitle = ({ target }) =>
-  dispatch(Actions[EDIT_TITLE](target.value))
+export const init = () => dispatch(Actions[INIT])
+export const increment = () => dispatch(Actions[INCREMENT])
+export const decrement = () => dispatch(Actions[DECREMENT])
+export const reset = () => dispatch(Actions[RESET])
+export const editSubtitle =
+  ({ target }) => dispatch(Actions[EDIT_SUBTITLE](target.value))
+export const editTitle =
+  ({ target }) => dispatch(Actions[EDIT_TITLE](target.value))
 
 export default Actions

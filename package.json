@@ -59,6 +59,6 @@
     "ramda-fantasy": "^0.8.0",
     "sanctuary": "^0.13.2",
     "typestyle": "^1.4.0",
-    "union-type": "0.3.3"
+    "union-type": "^0.4.0"
   }
 }
