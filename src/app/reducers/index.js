@@ -1,4 +1,4 @@
-import { compose, dec, inc, partial } from 'ramda'
+import { compose, dec, inc, partial } from '../../framework/utils/fp'
 import {
   get,
   hashMap,
@@ -40,13 +40,13 @@ const reducer = (state, action) => {
   const prevCount = get(state, COUNT)
 
   // partially apply state argument to make a reusable merge function
-  const mergeState = partial(merge, [state])
+  const mergeState = partial(merge, state)
 
   // partially apply key argument to make reusable set functions
-  const setCount = partial(hashMap, [COUNT])
-  const setSubtitle = partial(hashMap, [SUBTITLE])
-  const setTitle = partial(hashMap, [TITLE])
-  const setRgb = partial(hashMap, [RGB])
+  const setCount = partial(hashMap, COUNT)
+  const setSubtitle = partial(hashMap, SUBTITLE)
+  const setTitle = partial(hashMap, TITLE)
+  const setRgb = partial(hashMap, RGB)
 
   // alternatively, we could have defined the same functionality like this
   // const mergeState = x => merge(state, x)

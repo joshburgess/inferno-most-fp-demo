@@ -7,7 +7,7 @@ import {
   switchLatest,
   take,
 } from 'most'
-import { compose, curry } from 'ramda'
+import { compose, curry } from './fp'
 
 /******************************************************************************
   Custom stream operators made with Most.js built-ins & functional composition

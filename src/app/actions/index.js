@@ -12,7 +12,7 @@ import {
   mousemove,
   resize,
 } from '@most/dom-event'
-import { curry } from 'ramda'
+import { curry } from '../../framework/utils/fp'
 import { dispatch } from '../'
 import {
   INIT,

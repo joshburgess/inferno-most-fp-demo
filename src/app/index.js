@@ -4,7 +4,7 @@ import 'babel-polyfill'
 import { shim } from 'creed'
 shim() // eslint-disable-line fp/no-unused-expression
 
-import Inferno from 'inferno'
+// import Inferno from 'inferno'
 import {
   createDispatch,
   createStream,
@@ -12,7 +12,7 @@ import {
   withLifecycle,
 } from '../framework'
 import { map, scan } from 'most'
-import { partial } from 'ramda'
+import { partial } from '../framework/utils/fp'
 import { get, toClj } from 'mori'
 import { View } from './components'
 import reducer from './reducers'
@@ -60,7 +60,7 @@ const initialState = toClj({
 })
 
 const mapStateToView = state => {
-  const getState = partial(get, [state])
+  const getState = partial(get, state)
 
   const count = getState(COUNT)
   const rgb = getState(RGB)
