@@ -22,9 +22,9 @@
     typed-colors "^1.0.0"
     typed-figures "^1.0.0"
 
-"@most/dom-event@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@most/dom-event/-/dom-event-1.3.2.tgz#d82a5a9fc97d7d1408862fa5a042578b25b25cc1"
+"@most/dom-event@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@most/dom-event/-/dom-event-1.4.0.tgz#b984e7bd881e7f4c84e40268aee7e41bc628f60b"
 
 "@most/multicast@^1.1.1", "@most/multicast@^1.2.4", "@most/multicast@^1.2.5":
   version "1.2.5"
@@ -731,13 +731,13 @@ babel-plugin-transform-strict-mode@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
-babel-polyfill@^6.23.0:
-  version "6.23.0"
-  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.23.0.tgz#8364ca62df8eafb830499f699177466c3b03499d"
+babel-polyfill@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
   dependencies:
-    babel-runtime "^6.22.0"
-    core-js "^2.4.0"
-    regenerator-runtime "^0.10.0"
+    babel-runtime "^6.26.0"
+    core-js "^2.5.0"
+    regenerator-runtime "^0.10.5"
 
 babel-preset-es2015@^6.24.1:
   version "6.24.1"
@@ -811,19 +811,12 @@ babel-register@^6.18.0, babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.0.0, babel-runtime@^6.18.0, babel-runtime@^6.20.0, babel-runtime@^6.26.0:
+babel-runtime@^6.0.0, babel-runtime@^6.18.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
-
-babel-runtime@^6.22.0:
-  version "6.23.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.10.0"
 
 babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0:
   version "6.26.0"
@@ -1315,11 +1308,7 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.4.0:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
-
-core-js@^2.5.0:
+core-js@^2.4.0, core-js@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
@@ -1411,9 +1400,9 @@ data.maybe@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/data.maybe/-/data.maybe-1.2.2.tgz#f955e4b5572b2eb5047eab93d8bb3a1cc76a2dc3"
 
-date-fns@^1.28.0:
-  version "1.28.2"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.28.2.tgz#19e4192d68875c0bf7c9537e3f296a8ec64853ef"
+date-fns@^1.28.5:
+  version "1.28.5"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.28.5.tgz#257cfc45d322df45ef5658665967ee841cd73faf"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -2124,9 +2113,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-fluture@^6.2.6:
-  version "6.2.6"
-  resolved "https://registry.yarnpkg.com/fluture/-/fluture-6.2.6.tgz#9b289cc35daae9d9148cae4f1e846a2b747c1ef2"
+fluture@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/fluture/-/fluture-7.1.2.tgz#19a109b1fa958a490e538f68be4c175e9c7a5c82"
   dependencies:
     concurrify "^1.0.0"
     denque "^1.1.1"
@@ -2134,9 +2123,13 @@ fluture@^6.2.6:
     sanctuary-type-classes "^6.0.0"
     sanctuary-type-identifiers "^2.0.0"
 
-folktale@^2.0.0-alpha1, folktale@^2.0.0-beta1:
+folktale@^2.0.0-alpha1:
   version "2.0.0-beta1"
   resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.0-beta1.tgz#93c494786ee5134afdbdab1116d47ed7410c755d"
+
+folktale@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.1.tgz#6dc26a65565aefdef9520223e022dddf5b8d8462"
 
 for-in@^1.0.1:
   version "1.0.2"
@@ -2168,9 +2161,9 @@ forwarded@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.0.tgz#19ef9874c4ae1c297bcf078fde63a09b66a84363"
 
-free-style@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/free-style/-/free-style-2.3.1.tgz#ae256f7e78926bf034d2a51f4ba45715b4e6a709"
+free-style@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/free-style/-/free-style-2.4.1.tgz#4ef5a6d8a873f7b99beaf6410b428e0ba1b0f376"
 
 fresh@0.5.0:
   version "0.5.0"
@@ -3042,9 +3035,9 @@ merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
 
-metamagical-interface@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/metamagical-interface/-/metamagical-interface-3.4.0.tgz#7efdbd0402486bc82be71f7e49ca8849c49ab06e"
+metamagical-interface@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/metamagical-interface/-/metamagical-interface-3.5.0.tgz#87ae433ecd0e1d9ee87b8e2b9e2c72bfba2049f4"
   dependencies:
     data.maybe "^1.2.2"
     refinable "^1.0.2"
@@ -3120,13 +3113,13 @@ minimatch@^2.0.1:
   dependencies:
     brace-expansion "^1.0.0"
 
-minimatch@^3.0.0, minimatch@^3.0.3, minimatch@^3.0.4:
+minimatch@^3.0.0, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^3.0.2:
+minimatch@^3.0.2, minimatch@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.3.tgz#2a4e4090b96b2db06a9d7df01055a62a77c9b774"
   dependencies:
@@ -3179,9 +3172,17 @@ most@^0.19.7:
     "@most/prelude" "^1.2.0"
     symbol-observable "^0.2.4"
 
-most@^1.1.0, most@^1.4.1:
+most@^1.1.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/most/-/most-1.4.1.tgz#b513b5fb683bd59d6b1dcf8741503e62f072b291"
+  dependencies:
+    "@most/multicast" "^1.2.5"
+    "@most/prelude" "^1.4.0"
+    symbol-observable "^1.0.2"
+
+most@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/most/-/most-1.7.0.tgz#3f2478a5d6bf6bce687e6e4d8e973ca1a395cd1a"
   dependencies:
     "@most/multicast" "^1.2.5"
     "@most/prelude" "^1.4.0"
@@ -3783,9 +3784,9 @@ regenerate@^1.2.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
 
-regenerator-runtime@^0.10.0:
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.3.tgz#8c4367a904b51ea62a908ac310bf99ff90a82a3e"
+regenerator-runtime@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
 
 regenerator-runtime@^0.11.0:
   version "0.11.0"
@@ -4431,11 +4432,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typestyle@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-1.3.4.tgz#bdc66d3d8201fc745a9807c670e9d27a070b7c82"
+typestyle@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-1.4.0.tgz#949790d0a78eeb6a12dd85d303cb0b574da875cb"
   dependencies:
-    free-style "2.3.1"
+    free-style "2.4.1"
 
 ua-parser-js@^0.7.9:
   version "0.7.14"
