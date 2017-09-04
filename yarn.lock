@@ -1108,6 +1108,10 @@ circular-json@^0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
 
+classnames@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+
 cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
@@ -2097,6 +2101,10 @@ form-data@~2.1.1:
 forwarded@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.0.tgz#19ef9874c4ae1c297bcf078fde63a09b66a84363"
+
+free-style@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/free-style/-/free-style-2.4.1.tgz#4ef5a6d8a873f7b99beaf6410b428e0ba1b0f376"
 
 fresh@0.5.0:
   version "0.5.0"
@@ -3620,13 +3628,13 @@ ramda-fantasy@^0.8.0:
   dependencies:
     ramda ">=0.15.0"
 
-ramda@>=0.15.0, ramda@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
-
-ramda@^0.24.1:
+ramda@>=0.15.0, ramda@^0.24.1:
   version "0.24.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
+
+ramda@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
 
 randomatic@^1.1.3:
   version "1.1.7"
@@ -4379,6 +4387,12 @@ typed-figures@^1.0.0:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typestyle@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-1.4.0.tgz#949790d0a78eeb6a12dd85d303cb0b574da875cb"
+  dependencies:
+    free-style "2.4.1"
 
 ua-parser-js@^0.7.9:
   version "0.7.14"

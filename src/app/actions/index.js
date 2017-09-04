@@ -70,6 +70,9 @@ export const editTitle =
   ({ target }) => dispatch(createPayloadAction(EDIT_TITLE)(target.value))
 const updateRgb = rgb => dispatch(createPayloadAction(UPDATE_RGB)(rgb))
 
+/* eslint-disable better/explicit-return  */
+/* eslint-disable fp/no-nil */
+
 // Setup event handling
 export const setupEventHandling = () => {
   const editTitleTextbox = document.getElementById('edit-title')
@@ -165,7 +168,10 @@ export const setupEventHandling = () => {
   observe(decrement, decrementClick$)
   observe(updateRgb, rgb$)
 
-  /* eslint-enable fp/no-unused-expression */
+  observeEventStreams()
 
-  return observeEventStreams()
+  /* eslint-enable fp/no-unused-expression */
 }
+
+/* eslint-enable better/explicit-return  */
+/* eslint-enable fp/no-nil */

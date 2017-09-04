@@ -23,6 +23,7 @@ import {
   TITLE,
 } from './constants/stateKeys'
 import { setupEventHandling } from './actions'
+import { applyGlobalStyles } from './styles'
 
 // Create stream of actions
 const action$ = createStream()
@@ -68,22 +69,12 @@ const mapStateToView = state => {
 
   const props = { count, rgb, subtitle, title }
 
-  // const aView = <View {...props} onComponentDidMount={setupEventHandling} />
-
-  // console.log('aView', aView)
-
-  // return aView
+  // return <View {...props} onComponentDidMount={setupEventHandling} />
 
   const lifecycleEvents = { onComponentDidMount: setupEventHandling }
   const ViewWithCallback = withLifecycle(lifecycleEvents)(View)
 
-  // return ViewWithCallback(props)
-
-  const aView = ViewWithCallback(props)
-  
-  console.log('aView', aView)
-
-  return aView
+  return ViewWithCallback(props)
 }
 
 // Data flow for the entire app
@@ -97,5 +88,8 @@ const vTree$ = map(mapStateToView, state$)
 
 // Mount app, track virtual DOM tree updates, & automatically render changes
 render(vTree$, document.getElementById('root'))
+
+// apply global cssRules (using TypeStyle)
+applyGlobalStyles()
 
 /* eslint-enable fp/no-unused-expression */
