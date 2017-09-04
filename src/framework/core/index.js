@@ -27,17 +27,22 @@ const render = (vTree$, mountNode) =>
 const selectAction = curry((actionType, stream) =>
   filter(({ type }) => type && type === actionType, stream))
 
+/* eslint-disable fp/no-nil */
+
 // Higher order component utility which applies lifecycle functions on refs
-const withLifecycle = curry((refs, component, props) => createVNode(
+// (currently needed to add lifecycle events to hyperscript functional components)
+const withLifecycle = curry((lifecycleEvents, component, props) => createVNode(
   ComponentFunction, // flags
   component, // type
+  null, // className
+  null, // children
   props, // props
-  false, // children
-  false, // events
-  false, // key
-  refs, // refs
-  false // isNormalized
+  null, // key
+  lifecycleEvents, // refs (lifecycle events are stored as refs)
+  false // noNormalise
 ))
+
+/* eslint-enable fp/no-nil */
 
 export {
   createDispatch,

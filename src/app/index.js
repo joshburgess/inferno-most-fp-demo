@@ -4,7 +4,7 @@ import 'babel-polyfill'
 import { shim } from 'creed'
 shim() // eslint-disable-line fp/no-unused-expression
 
-// import Inferno from 'inferno'
+import Inferno from 'inferno'
 import {
   createDispatch,
   createStream,
@@ -68,12 +68,22 @@ const mapStateToView = state => {
 
   const props = { count, rgb, subtitle, title }
 
-  // return <View {...props} onComponentDidMount={setupEventHandling} />
+  // const aView = <View {...props} onComponentDidMount={setupEventHandling} />
+
+  // console.log('aView', aView)
+
+  // return aView
 
   const lifecycleEvents = { onComponentDidMount: setupEventHandling }
   const ViewWithCallback = withLifecycle(lifecycleEvents)(View)
 
-  return ViewWithCallback(props)
+  // return ViewWithCallback(props)
+
+  const aView = ViewWithCallback(props)
+  
+  console.log('aView', aView)
+
+  return aView
 }
 
 // Data flow for the entire app
