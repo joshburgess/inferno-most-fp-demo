@@ -3,6 +3,7 @@ import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div } = hh(h)
 import { Counter, Header, PartyParrot, Textbox } from '../../components'
+import { COUNTER_DEMO } from '../../styles'
 
 const View = ({ count, rgb, subtitle, title }) => {
   const counterAttrs = {
@@ -14,7 +15,7 @@ const View = ({ count, rgb, subtitle, title }) => {
   }
 
   return (
-    div('.counter-demo', counterAttrs, [
+    div(`.${COUNTER_DEMO}`, counterAttrs, [
       Header({ title, subtitle }),
       Counter({ count }),
       Textbox({

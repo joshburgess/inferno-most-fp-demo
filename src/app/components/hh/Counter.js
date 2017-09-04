@@ -3,15 +3,11 @@ import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div, h1 } = hh(h)
 import { Button } from '../../components'
-
-const resetStyle = {
-  background: 'rgb(177, 136, 136)',
-  margin: '40px 0',
-}
+import { CENTERED, RESET_BTN } from '../../styles'
 
 const Counter = ({ title, subtitle, count }) =>
-  div('.centered', [
-    Button({ id: 'reset-btn', text: 'Reset', style: resetStyle }),
+  div(`.${CENTERED}`, [
+    Button({ id: 'reset-btn', text: 'Reset', className: RESET_BTN }),
     Button({ id: 'decrement-btn', text: '-' }),
     h1('', [count]),
     Button({ id: 'increment-btn', text: '+' }),

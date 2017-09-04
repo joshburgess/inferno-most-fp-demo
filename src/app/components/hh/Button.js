@@ -2,8 +2,9 @@
 import h from 'inferno-hyperscript'
 import hh from 'hyperscript-helpers'
 const { div } = hh(h)
+import { COUNTER_BTN } from '../../styles'
 
-const Button = ({ id, style, text }) =>
-  div(`#${id}.counter-btn`, { style }, text)
+const Button = ({ id, className = '', text }) =>
+  div(`#${id}.${COUNTER_BTN}.${className}`, text)
 
 export default Button

@@ -1,8 +1,13 @@
 // Use JSX
 import Inferno from 'inferno'
+import { COUNTER_BTN } from '../../styles'
+import classNames from 'classnames'
 
-const Button = ({ id, style, text }) =>
-  <div id={id} className='counter-btn' style={style}>
+const Button = ({ text, clickHandler, className = '' }) =>
+  <div
+    className={classNames(COUNTER_BTN, className)}
+    onClick={clickHandler}
+  >
     {text}
   </div>
 

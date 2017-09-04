@@ -1,6 +1,7 @@
 // Use JSX
 import Inferno from 'inferno'
 import { Counter, Header, PartyParrot, Textbox } from '../../components'
+import { COUNTER_DEMO } from '../../styles'
 
 const View = ({ count, rgb, subtitle, title }) => {
   const counterStyle = rgb
@@ -10,7 +11,7 @@ const View = ({ count, rgb, subtitle, title }) => {
     : ''
 
   return (
-    <div className={'counter-demo'} style={counterStyle}>
+    <div className={COUNTER_DEMO} style={counterStyle}>
       <Header title={title} subtitle={subtitle} />
       <Counter count={count} />
       <Textbox

@@ -1,10 +1,11 @@
 // Use JSX
 import Inferno from 'inferno'
+import { INPUT, LABEL } from '../../styles'
 
 const Textbox = ({ id, label, placeholder }) =>
   <div>
-    <label htmlFor={id}>{label}</label>
-    <input id={id} type='text' placeholder={placeholder} />
+    <label className={LABEL} htmlFor={id}>{label}</label>
+    <input id={id} className={INPUT} type='text' placeholder={placeholder} />
   </div>
 
 export default Textbox
