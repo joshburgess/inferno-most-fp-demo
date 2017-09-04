@@ -2123,11 +2123,7 @@ fluture@^7.1.2:
     sanctuary-type-classes "^6.0.0"
     sanctuary-type-identifiers "^2.0.0"
 
-folktale@^2.0.0-alpha1:
-  version "2.0.0-beta1"
-  resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.0-beta1.tgz#93c494786ee5134afdbdab1116d47ed7410c755d"
-
-folktale@^2.0.1:
+folktale@^2.0.0-alpha1, folktale@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.0.1.tgz#6dc26a65565aefdef9520223e022dddf5b8d8462"
 
@@ -2491,49 +2487,49 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-inferno-component@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.6.0.tgz#b3a0f1358661eb4f91a7dda286c04a4bb95cd227"
+inferno-component@3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.8.2.tgz#707c204afce19e8e88811758fbad019c0490b42c"
   dependencies:
-    inferno "3.6.0"
-    inferno-shared "3.6.0"
-    inferno-vnode-flags "3.6.0"
+    inferno "3.8.2"
+    inferno-shared "3.8.2"
+    inferno-vnode-flags "3.8.2"
 
-inferno-devtools@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-3.6.0.tgz#96b377ede6dd27a029dbdf263324d08f478bfac5"
+inferno-devtools@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-3.8.2.tgz#9b51f7709862799a6dd3646536653c99197d4918"
   dependencies:
-    inferno "3.6.0"
-    inferno-component "3.6.0"
-    inferno-shared "3.6.0"
-    inferno-vnode-flags "3.6.0"
+    inferno "3.8.2"
+    inferno-component "3.8.2"
+    inferno-shared "3.8.2"
+    inferno-vnode-flags "3.8.2"
 
-inferno-hyperscript@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/inferno-hyperscript/-/inferno-hyperscript-3.6.0.tgz#f84d49fd75be4684eda27dd6bf1ec1d1253620c2"
+inferno-hyperscript@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/inferno-hyperscript/-/inferno-hyperscript-3.8.2.tgz#57fc8ec4f7fc0c15c591cda4ab4c089d0c69a180"
   dependencies:
-    inferno "3.6.0"
-    inferno-shared "3.6.0"
-    inferno-vnode-flags "3.6.0"
+    inferno "3.8.2"
+    inferno-shared "3.8.2"
+    inferno-vnode-flags "3.8.2"
 
-inferno-shared@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.6.0.tgz#02c20a458e28ad6abb4b90054aaab0b903b81d5e"
+inferno-shared@3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.8.2.tgz#5668267f98ba2c4236de3db0b4276e40b032cab4"
 
 inferno-vnode-flags@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.0.0.tgz#f396390f3dafae3b76eea04d04eed6cf2004473b"
 
-inferno-vnode-flags@3.6.0, inferno-vnode-flags@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.6.0.tgz#597e0f0fe397750a62ee402e9bd3ee11caf00514"
+inferno-vnode-flags@3.8.2, inferno-vnode-flags@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.8.2.tgz#ca6cfba996f70ca468bf621f1db4b8a3b4335c38"
 
-inferno@3.6.0, inferno@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.6.0.tgz#dc932be04c0f53f9540fef690b41b99dd1132e2f"
+inferno@3.8.2, inferno@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.8.2.tgz#284ef2af52404c0d7aa0d14782464ad11ccc635b"
   dependencies:
-    inferno-shared "3.6.0"
-    inferno-vnode-flags "3.6.0"
+    inferno-shared "3.8.2"
+    inferno-vnode-flags "3.8.2"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -3172,15 +3168,7 @@ most@^0.19.7:
     "@most/prelude" "^1.2.0"
     symbol-observable "^0.2.4"
 
-most@^1.1.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/most/-/most-1.4.1.tgz#b513b5fb683bd59d6b1dcf8741503e62f072b291"
-  dependencies:
-    "@most/multicast" "^1.2.5"
-    "@most/prelude" "^1.4.0"
-    symbol-observable "^1.0.2"
-
-most@^1.7.0:
+most@^1.1.0, most@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/most/-/most-1.7.0.tgz#3f2478a5d6bf6bce687e6e4d8e973ca1a395cd1a"
   dependencies:
