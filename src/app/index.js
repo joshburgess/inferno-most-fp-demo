@@ -4,7 +4,7 @@ import 'babel-polyfill'
 import { shim } from 'creed'
 shim() // eslint-disable-line fp/no-unused-expression
 
-import Inferno from 'inferno'
+// import Inferno from 'inferno'
 import {
   createDispatch,
   createStream,

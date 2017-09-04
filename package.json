@@ -1,7 +1,7 @@
 {
   "name": "inferno-most-fp-demo",
   "version": "0.0.0",
-  "description": "A demo showing how to build a React+Redux-like architecture from scratch using Inferno, Most.js, reactive programmning, and various functional programming tools & techniques",
+  "description": "A demo for the ReactJS Tampa Bay meetup showing how to build a React+Redux-like architecture from scratch using Inferno, Most.js, reactive programmning, and various functional programming tools & techniques",
   "author": "Josh Burgess",
   "license": "MIT",
   "scripts": {
