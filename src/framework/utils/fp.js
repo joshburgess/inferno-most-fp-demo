@@ -204,7 +204,7 @@ const add = (...args) => fold1(add2, args)
 const inc = add2(1)
 const dec = add2(-1)
 
-// curried add functions for when the function arity is known
+// curried multiply functions for when the function arity is known
 const mult2 = curry2((a, b) => Number(a) * Number(b))
 const mult3 = curry3((a, b, c) => mult2(a, b) * Number(c))
 const mult4 = curry4((a, b, c, d) => mult3(a, b, c) * Number(d))
